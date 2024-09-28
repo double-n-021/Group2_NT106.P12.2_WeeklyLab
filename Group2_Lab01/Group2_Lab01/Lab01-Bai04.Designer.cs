@@ -122,7 +122,7 @@
             // 
             this.tbThang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbThang.Location = new System.Drawing.Point(349, 60);
+            this.tbThang.Location = new System.Drawing.Point(349, 59);
             this.tbThang.Name = "tbThang";
             this.tbThang.Size = new System.Drawing.Size(59, 22);
             this.tbThang.TabIndex = 15;
