@@ -144,7 +144,6 @@
             this.MaximizeBox = false;
             this.Name = "Lab01";
             this.Text = "Lab 1";
-            this.Load += new System.EventHandler(this.Lab01_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -12,6 +12,10 @@ namespace Group2_Lab01
 {
     public partial class Bai01 : Form
     {
+        public Bai01()
+        {
+            InitializeComponent();
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();

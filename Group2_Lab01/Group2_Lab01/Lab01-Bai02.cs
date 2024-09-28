@@ -24,7 +24,7 @@ namespace Group2_Lab01
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

@@ -43,10 +43,5 @@ namespace Group2_Lab01
         {
 
         }
-
-        private void Lab01_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
