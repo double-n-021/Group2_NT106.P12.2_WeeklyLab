@@ -23,12 +23,13 @@ namespace Group2_Lab01
             string[] Tens = { "Mười", "Hai Mươi", "Ba Mươi", "Bốn Mươi", "Năm Mươi", "Sáu Mươi", "Bảy Mươi", "Tám Mươi", "Chín Mươi" };
             string[] ThousandScales = { "", "Nghìn", "Triệu", "Tỷ" };
 
-            long no;
-    if (!long.TryParse(enterNum.Text, out no) || no < -999999999999 || no > 999999999999)
-    {
-        showResults.Text = "Vui lòng nhập số nguyên hợp lệ.";
-        return;
-    }
+            long no; //Lưu mã người dùng nhập vào
+
+            if (!long.TryParse(enterNum.Text, out no) || no < -999999999999 || no > 999999999999)
+            {
+                showResults.Text = "Vui lòng nhập số nguyên hợp lệ.";
+                return;
+            }
 
             if (no == 0)
             {
@@ -47,11 +48,11 @@ namespace Group2_Lab01
 
             while (no > 0)
             {
-                int group = (int)(no % 1000); //Mỗi lần lặp, chương trình lấy 3 chữ số cuối của số no (dùng phép toán % 1000 để chia lấy phần dư)
+                int group = (int)(no % 1000); //Mỗi lần lặp, chương trình lấy 3 chữ số cuối của số no (dùng phép toán % 1000 để chia lấy phần dư) và lưu vào biến group
                 if (group > 0 || scaleIndex == 0)
                 {
                     string groupWords = ReadHundreds(group, Ones, Tens);
-                    if (scaleIndex > 0)
+                    if (scaleIndex > 0) //Nếu nhóm 3 chữ số không phải là hàng đơn vị, hàng chục, hàng trăm thì sẽ thêm các từ "Nghìn", "Triệu", "Tỷ" tương ứng.
                     {
                         groupWords += " " + ThousandScales[scaleIndex];
                     }
@@ -59,6 +60,7 @@ namespace Group2_Lab01
                 }
                 no /= 1000;
                 scaleIndex++;
+                //
             }
 
             if (isNegative)
