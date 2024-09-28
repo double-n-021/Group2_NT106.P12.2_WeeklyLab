@@ -52,6 +52,12 @@
     <Compile Include="Lab01-Bai01.Designer.cs">
       <DependentUpon>Lab01-Bai01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab01-Bai03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab01-Bai03.Designer.cs">
+      <DependentUpon>Lab01-Bai03.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab01_Control.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab01-Bai02.resx">
       <DependentUpon>Lab01-Bai02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab01-Bai03.resx">
+      <DependentUpon>Lab01-Bai03.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab01_Control.resx">
       <DependentUpon>Lab01_Control.cs</DependentUpon>

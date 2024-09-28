@@ -31,7 +31,8 @@ namespace Group2_Lab01
 
         private void btn_Bai03_Click(object sender, EventArgs e)
         {
-
+            Bai03 formbai01 = new Bai03();
+            formbai01.Show();
         }
 
         private void btn_Bai04_Click(object sender, EventArgs e)
