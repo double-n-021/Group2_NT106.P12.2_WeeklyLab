@@ -42,5 +42,10 @@ namespace NT106.P12._2_Lab01_23520168
         {
 
         }
+
+        private void Lab01_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

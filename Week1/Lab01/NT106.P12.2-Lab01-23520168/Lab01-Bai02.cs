@@ -78,5 +78,10 @@ namespace NT106.P12._2_Lab01_23520168
             }
             return s;
         }
+
+        private void Bai02_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -47,7 +47,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(60, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(487, 31);
+            this.label1.Size = new System.Drawing.Size(603, 40);
             this.label1.TabIndex = 5;
             this.label1.Text = "Lập trình C# và Windows Forms cơ bản";
             // 
@@ -93,6 +93,7 @@
             // btn_Bai02
             // 
             this.btn_Bai02.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btn_Bai02.DialogResult = System.Windows.Forms.DialogResult.No;
             this.btn_Bai02.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Bai02.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Bai02.Location = new System.Drawing.Point(13, 160);
@@ -129,7 +130,7 @@
             // 
             // Lab01
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -146,6 +147,7 @@
             this.MaximizeBox = false;
             this.Name = "Lab01";
             this.Text = "Lab 1";
+            this.Load += new System.EventHandler(this.Lab01_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
