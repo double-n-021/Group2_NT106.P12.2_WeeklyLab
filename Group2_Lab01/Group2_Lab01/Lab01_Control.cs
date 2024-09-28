@@ -43,7 +43,8 @@ namespace Group2_Lab01
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Bai05 formbai04 = new Bai05();
+            formbai04.Show();
         }
     }
 }

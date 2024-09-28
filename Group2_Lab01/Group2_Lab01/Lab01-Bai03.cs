@@ -24,16 +24,22 @@ namespace Group2_Lab01
             string[] ThousandScales = { "", "Nghìn", "Triệu", "Tỷ" };
 
             long no;
-            if (!long.TryParse(enterNum.Text, out no) || no < 0 || no > 999999999999)
-            {
-                showResults.Text = "Vui lòng nhập số nguyên dương không quá 12 chữ số.";
-                return;
-            }
+    if (!long.TryParse(enterNum.Text, out no) || no < -999999999999 || no > 999999999999)
+    {
+        showResults.Text = "Vui lòng nhập số nguyên hợp lệ.";
+        return;
+    }
 
             if (no == 0)
             {
                 showResults.Text = "Không";
                 return;
+            }
+            // Kiểm tra và chuyển số âm thành số dương
+            bool isNegative = no < 0;
+            if (isNegative) 
+            {
+                no = Math.Abs(no);
             }
 
             string strWords = ""; //Chuỗi rỗng để lưu kết quả cuối cùng
@@ -53,6 +59,11 @@ namespace Group2_Lab01
                 }
                 no /= 1000;
                 scaleIndex++;
+            }
+
+            if (isNegative)
+            {
+                strWords = "Âm " + strWords;
             }
 
             showResults.Text = strWords.Trim();
