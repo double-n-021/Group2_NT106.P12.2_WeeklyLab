@@ -36,37 +36,29 @@ namespace Group2_Lab01
             int A;
             int B;
             int kq1, kq2;
+
             if (!int.TryParse(textBox_A.Text, out A) || !int.TryParse(textBox_B.Text, out B))
             {
                 MessageBox.Show("Cần nhập số nguyên!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             if (string.IsNullOrEmpty(comboBox1.Text))
             {
                 MessageBox.Show("Hãy chọn 1 cách tính!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
             if (comboBox1.Text == "Bảng cửu chương B - A")
             {
-                if (B < A)
-                {
-                    MessageBox.Show("Cần nhập A < B!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
                 TinhBangCuuChuong(A, B);
-                //textBox_KQ.Text = TinhBangCuuChuong(A, B).ToString();
             }
             else if (comboBox1.Text == "Tính toán giá trị (A - B)! và S = A^1 + A^2 + ... + A^B")
             {
-                if(A<B)
+                if(A<B || B<=0)
                 {
-                    MessageBox.Show("Cần nhập A >= B!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Cần nhập A >= B và B > 0!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if(B == 0)
-                {
-                    MessageBox.Show("Cần nhập B > 0!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }    
                 kq1 = TinhToanGiaTri1(A, B);
                 kq2 = TinhToanGiaTri2(A, B);
                 textBox_KQ.Multiline = true;
