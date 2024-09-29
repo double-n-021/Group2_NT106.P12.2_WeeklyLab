@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bai05));
             this.txtName = new System.Windows.Forms.TextBox();
             this.chooseSex = new System.Windows.Forms.ComboBox();
             this.txtScore2 = new System.Windows.Forms.TextBox();
@@ -42,55 +43,68 @@
             this.label6 = new System.Windows.Forms.Label();
             this.candidateList = new System.Windows.Forms.DataGridView();
             this.enterCandidate = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.candidateList)).BeginInit();
             this.enterCandidate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(109, 37);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(82, 30);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(211, 22);
+            this.txtName.Size = new System.Drawing.Size(159, 22);
             this.txtName.TabIndex = 0;
             // 
             // chooseSex
             // 
+            this.chooseSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseSex.FormattingEnabled = true;
             this.chooseSex.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.chooseSex.Location = new System.Drawing.Point(109, 68);
+            this.chooseSex.Location = new System.Drawing.Point(82, 55);
+            this.chooseSex.Margin = new System.Windows.Forms.Padding(2);
             this.chooseSex.Name = "chooseSex";
-            this.chooseSex.Size = new System.Drawing.Size(211, 24);
+            this.chooseSex.Size = new System.Drawing.Size(159, 24);
             this.chooseSex.TabIndex = 1;
             // 
             // txtScore2
             // 
-            this.txtScore2.Location = new System.Drawing.Point(484, 65);
+            this.txtScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScore2.Location = new System.Drawing.Point(363, 53);
+            this.txtScore2.Margin = new System.Windows.Forms.Padding(2);
             this.txtScore2.Name = "txtScore2";
-            this.txtScore2.Size = new System.Drawing.Size(135, 22);
+            this.txtScore2.Size = new System.Drawing.Size(102, 22);
             this.txtScore2.TabIndex = 2;
             // 
             // txtScore1
             // 
-            this.txtScore1.Location = new System.Drawing.Point(484, 34);
+            this.txtScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScore1.Location = new System.Drawing.Point(363, 28);
+            this.txtScore1.Margin = new System.Windows.Forms.Padding(2);
             this.txtScore1.Name = "txtScore1";
-            this.txtScore1.Size = new System.Drawing.Size(135, 22);
+            this.txtScore1.Size = new System.Drawing.Size(102, 22);
             this.txtScore1.TabIndex = 3;
             // 
             // txtScore3
             // 
-            this.txtScore3.Location = new System.Drawing.Point(484, 96);
+            this.txtScore3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScore3.Location = new System.Drawing.Point(363, 78);
+            this.txtScore3.Margin = new System.Windows.Forms.Padding(2);
             this.txtScore3.Name = "txtScore3";
-            this.txtScore3.Size = new System.Drawing.Size(135, 22);
+            this.txtScore3.Size = new System.Drawing.Size(102, 22);
             this.txtScore3.TabIndex = 4;
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(27, 136);
+            this.btnSave.Location = new System.Drawing.Point(20, 110);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(92, 26);
+            this.btnSave.Size = new System.Drawing.Size(69, 21);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -99,9 +113,10 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(141, 137);
+            this.btnDelete.Location = new System.Drawing.Point(106, 111);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(92, 25);
+            this.btnDelete.Size = new System.Drawing.Size(69, 20);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -110,7 +125,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 40);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 16);
             this.label2.TabIndex = 8;
@@ -119,7 +136,9 @@
             // Score3
             // 
             this.Score3.AutoSize = true;
-            this.Score3.Location = new System.Drawing.Point(401, 99);
+            this.Score3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Score3.Location = new System.Drawing.Point(282, 81);
+            this.Score3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Score3.Name = "Score3";
             this.Score3.Size = new System.Drawing.Size(77, 16);
             this.Score3.TabIndex = 9;
@@ -128,7 +147,9 @@
             // Score2
             // 
             this.Score2.AutoSize = true;
-            this.Score2.Location = new System.Drawing.Point(401, 68);
+            this.Score2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Score2.Location = new System.Drawing.Point(282, 55);
+            this.Score2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Score2.Name = "Score2";
             this.Score2.Size = new System.Drawing.Size(77, 16);
             this.Score2.TabIndex = 10;
@@ -137,7 +158,9 @@
             // Score1
             // 
             this.Score1.AutoSize = true;
-            this.Score1.Location = new System.Drawing.Point(401, 37);
+            this.Score1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Score1.Location = new System.Drawing.Point(282, 30);
+            this.Score1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Score1.Name = "Score1";
             this.Score1.Size = new System.Drawing.Size(77, 16);
             this.Score1.TabIndex = 11;
@@ -146,7 +169,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(69, 71);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(44, 59);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 16);
             this.label6.TabIndex = 12;
@@ -154,17 +179,20 @@
             // 
             // candidateList
             // 
+            this.candidateList.BackgroundColor = System.Drawing.Color.MintCream;
             this.candidateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.candidateList.Location = new System.Drawing.Point(12, 237);
+            this.candidateList.Location = new System.Drawing.Point(9, 193);
+            this.candidateList.Margin = new System.Windows.Forms.Padding(2);
             this.candidateList.Name = "candidateList";
             this.candidateList.RowHeadersWidth = 51;
             this.candidateList.RowTemplate.Height = 24;
-            this.candidateList.Size = new System.Drawing.Size(1116, 231);
+            this.candidateList.Size = new System.Drawing.Size(970, 188);
             this.candidateList.TabIndex = 13;
             this.candidateList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.candidateList_CellContentClick);
             // 
             // enterCandidate
             // 
+            this.enterCandidate.BackColor = System.Drawing.Color.LightGreen;
             this.enterCandidate.Controls.Add(this.label2);
             this.enterCandidate.Controls.Add(this.btnDelete);
             this.enterCandidate.Controls.Add(this.Score3);
@@ -177,25 +205,45 @@
             this.enterCandidate.Controls.Add(this.label6);
             this.enterCandidate.Controls.Add(this.txtName);
             this.enterCandidate.Controls.Add(this.chooseSex);
-            this.enterCandidate.Location = new System.Drawing.Point(34, 35);
+            this.enterCandidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enterCandidate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enterCandidate.Location = new System.Drawing.Point(34, 25);
+            this.enterCandidate.Margin = new System.Windows.Forms.Padding(2);
             this.enterCandidate.Name = "enterCandidate";
-            this.enterCandidate.Size = new System.Drawing.Size(661, 180);
+            this.enterCandidate.Padding = new System.Windows.Forms.Padding(2);
+            this.enterCandidate.Size = new System.Drawing.Size(554, 146);
             this.enterCandidate.TabIndex = 14;
             this.enterCandidate.TabStop = false;
             this.enterCandidate.Text = "Nhập Thí Sinh";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(700, 25);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(202, 173);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
             // Bai05
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 480);
+            this.BackColor = System.Drawing.Color.PaleGreen;
+            this.ClientSize = new System.Drawing.Size(990, 390);
             this.Controls.Add(this.candidateList);
             this.Controls.Add(this.enterCandidate);
+            this.Controls.Add(this.pictureBox2);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Bai05";
             this.Text = "Candidate Management";
             ((System.ComponentModel.ISupportInitialize)(this.candidateList)).EndInit();
             this.enterCandidate.ResumeLayout(false);
             this.enterCandidate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +264,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView candidateList;
         private System.Windows.Forms.GroupBox enterCandidate;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
