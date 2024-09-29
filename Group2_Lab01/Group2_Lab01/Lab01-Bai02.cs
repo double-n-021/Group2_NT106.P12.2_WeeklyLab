@@ -13,10 +13,6 @@ namespace Group2_Lab01
 {
     public partial class Bai02 : Form
     {
-        private int A;
-        private int B;
-        private int kq;
-
         public Bai02()
         {
             InitializeComponent();
@@ -31,11 +27,15 @@ namespace Group2_Lab01
         {
             textBox_A.Clear();
             textBox_B.Clear();
+            comboBox1.SelectedIndex= -1;
             textBox_KQ.Clear();
         }
 
         private void btn_Cal_Click(object sender, EventArgs e)
         {
+            int A;
+            int B;
+            int kq1, kq2;
             if (!int.TryParse(textBox_A.Text, out A) || !int.TryParse(textBox_B.Text, out B))
             {
                 MessageBox.Show("Cần nhập số nguyên!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,23 +43,50 @@ namespace Group2_Lab01
             }
             if (string.IsNullOrEmpty(comboBox1.Text))
             {
-                MessageBox.Show("Hãy chọn 1 cách tính!!!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Hãy chọn 1 cách tính!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (comboBox1.Text == "Bảng cửu chương")
+            if (comboBox1.Text == "Bảng cửu chương B - A")
             {
-                kq = TinhBangCuuChuong(A, B);
-                textBox_KQ.Text = kq.ToString();
+                if (B < A)
+                {
+                    MessageBox.Show("Cần nhập A < B!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                TinhBangCuuChuong(A, B);
+                //textBox_KQ.Text = TinhBangCuuChuong(A, B).ToString();
             }
-            else if (comboBox1.Text == "Tính toán giá trị")
+            else if (comboBox1.Text == "Tính toán giá trị (A - B)! và S = A^1 + A^2 + ... + A^B")
             {
-                kq = TinhToanGiaTri(A, B);
-                textBox_KQ.Text = kq.ToString();
+                if(A<B)
+                {
+                    MessageBox.Show("Cần nhập A >= B!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if(B == 0)
+                {
+                    MessageBox.Show("Cần nhập B > 0!!!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }    
+                kq1 = TinhToanGiaTri1(A, B);
+                kq2 = TinhToanGiaTri2(A, B);
+                textBox_KQ.Multiline = true;
+                textBox_KQ.Text = $"({A} - {B})! = {kq1.ToString()}{Environment.NewLine}S = {kq2.ToString()}";
             }
         }
 
-        private int TinhBangCuuChuong(int A, int B)
+        private void TinhBangCuuChuong(int A, int B)
         {
-            int h = Math.Abs(A - B);
+            int h = B - A;
+            for(int i=1;i<10;i++)
+            {
+                textBox_KQ.AppendText($"{h} x {i} = {h * i}{Environment.NewLine}");
+            }
+            textBox_KQ.AppendText($"{h} x {10} = {h * 10}");
+        }
+
+        private int TinhToanGiaTri1(int A, int B)
+        {
+            int h = A - B;
             int gt = 1;
             for (int i = 1; i <= h; i++)
             {
@@ -68,7 +95,7 @@ namespace Group2_Lab01
             return gt;
         }
 
-        private int TinhToanGiaTri(int A, int B)
+        private int TinhToanGiaTri2(int A, int B)
         {
             int t = 1;
             int s = 0;

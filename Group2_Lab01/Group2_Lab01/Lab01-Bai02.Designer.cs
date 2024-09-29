@@ -76,7 +76,6 @@
             // 
             // textBox_B
             // 
-            this.textBox_B.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_B.Location = new System.Drawing.Point(417, 21);
             this.textBox_B.Name = "textBox_B";
             this.textBox_B.Size = new System.Drawing.Size(149, 20);
@@ -86,11 +85,11 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Bảng cửu chương",
-            "Tính toán giá trị"});
-            this.comboBox1.Location = new System.Drawing.Point(193, 75);
+            "Bảng cửu chương B - A",
+            "Tính toán giá trị (A - B)! và S = A^1 + A^2 + ... + A^B"});
+            this.comboBox1.Location = new System.Drawing.Point(145, 75);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 21);
+            this.comboBox1.Size = new System.Drawing.Size(281, 21);
             this.comboBox1.TabIndex = 4;
             // 
             // btn_Cal
@@ -141,19 +140,19 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 183);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(554, 100);
+            this.groupBox1.Size = new System.Drawing.Size(554, 313);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "KẾT QUẢ";
             // 
             // textBox_KQ
             // 
-            this.textBox_KQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_KQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_KQ.Location = new System.Drawing.Point(15, 25);
             this.textBox_KQ.Multiline = true;
             this.textBox_KQ.Name = "textBox_KQ";
             this.textBox_KQ.ReadOnly = true;
-            this.textBox_KQ.Size = new System.Drawing.Size(521, 57);
+            this.textBox_KQ.Size = new System.Drawing.Size(521, 270);
             this.textBox_KQ.TabIndex = 0;
             // 
             // pictureBox2
@@ -181,7 +180,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(578, 295);
+            this.ClientSize = new System.Drawing.Size(578, 500);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.groupBox1);
