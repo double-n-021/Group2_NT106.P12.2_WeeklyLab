@@ -61,13 +61,13 @@ namespace Group2_Lab01
                 }
                 kq1 = TinhToanGiaTri1(A, B);
                 kq2 = TinhToanGiaTri2(A, B);
-                textBox_KQ.Multiline = true;
-                textBox_KQ.Text = $"({A} - {B})! = {kq1.ToString()}{Environment.NewLine}S = {kq2.ToString()}";
+                textBox_KQ.Text = $"({A} - {B})! = {kq1}{Environment.NewLine}S = {kq2}";
             }
         }
 
         private void TinhBangCuuChuong(int A, int B)
         {
+            textBox_KQ.Clear();
             int h = B - A;
             for(int i=1;i<10;i++)
             {
