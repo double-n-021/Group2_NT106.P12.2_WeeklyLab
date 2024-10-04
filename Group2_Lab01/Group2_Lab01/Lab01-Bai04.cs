@@ -19,8 +19,8 @@ namespace Group2_Lab01
 
         private bool kiemTraNamnhuan(int nam)
         {
-            if (nam % 4 == 0 & nam % 100 != 0)
-                if (nam % 400 == 0) return true;
+            if ((nam % 4 == 0 & nam % 100 != 0) || (nam % 400 == 0))
+                return true;
             return false;
         }
 
@@ -28,27 +28,22 @@ namespace Group2_Lab01
         {
             int[] ngaytrongthang = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
             if (kiemTraNamnhuan(nam)) ngaytrongthang[1] = 29;
-            bool ktNam = (nam < 1);
-            bool ktThang = (thang < 1 || thang > 12);
-            if (ktNam)
+            if (nam < 1)
             {
-                MessageBox.Show("Không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-            }
-            if (ktThang)
-            {
-                MessageBox.Show("Không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            if (!ktThang)
+            if (thang < 1 || thang > 12)
             {
-                bool ktNgay = (ngay < 1 || ngay > ngaytrongthang[thang - 1]);
-                if (ktNgay)
-                {
-                    MessageBox.Show("Không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
-                }
+                MessageBox.Show("Không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (ngay < 1 || ngay > ngaytrongthang[thang - 1])
+            {
+                MessageBox.Show("Không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             return true;
         }
@@ -106,9 +101,6 @@ namespace Group2_Lab01
                     case 12:
                         cung = (ngay <= 21) ? "Cung Nhân Mã" : "Cung Ma Kết";
                         break;
-                    default:
-                        cung = "Ngày hoặc tháng không hợp lệ!";
-                        break;
                 }
             }
             return cung;
@@ -117,13 +109,9 @@ namespace Group2_Lab01
         private void Lab01_Bai04_Load(object sender, EventArgs e)
         {
             label1.Parent = pictureBox1;
-            label1.BackColor = Color.Transparent;
             label2.Parent = pictureBox1;
-            label2.BackColor = Color.Transparent;
             label3.Parent = pictureBox1;
-            label3.BackColor = Color.Transparent;
             label4.Parent = pictureBox1;
-            label4.BackColor = Color.Transparent;
         }
     }
 }
