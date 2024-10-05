@@ -121,7 +121,7 @@ namespace Group2_Lab01
 
         private void btnReadNum_Click(object sender, EventArgs e)
         {
-            long num; //Lưu mã người dùng nhập vào
+            long num; 
 
             if (!long.TryParse(enterNum.Text, out num) || num < -999999999999 || num > 999999999999)
             {
