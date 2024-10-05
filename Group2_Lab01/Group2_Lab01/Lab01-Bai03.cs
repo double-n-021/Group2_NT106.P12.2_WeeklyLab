@@ -27,7 +27,7 @@ namespace Group2_Lab01
 
             if (!long.TryParse(enterNum.Text, out no) || no < -999999999999 || no > 999999999999)
             {
-                showResults.Text = "Vui lòng nhập số nguyên hợp lệ.";
+                MessageBox.Show("Vui lòng nhập số nguyên hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

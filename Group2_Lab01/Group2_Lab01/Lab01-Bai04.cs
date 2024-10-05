@@ -105,7 +105,7 @@ namespace Group2_Lab01
             }
             return cung;
         }
-
+        //Đổi Back Color của các Label thành trong suốt và hiển thị nền là PictureBox;
         private void Lab01_Bai04_Load(object sender, EventArgs e)
         {
             label1.Parent = pictureBox1;

@@ -36,9 +36,9 @@ namespace Group2_Lab01
             sexColumn.Items.AddRange(new string[] { "Nam", "Nữ" });
             candidateList.Columns.Add(sexColumn);
 
-            candidateList.Columns.Add("Score1", "Điểm 1");
-            candidateList.Columns.Add("Score2", "Điểm 2");
-            candidateList.Columns.Add("Score3", "Điểm 3");
+            candidateList.Columns.Add("Score1", "Môn 1");
+            candidateList.Columns.Add("Score2", "Môn 2");
+            candidateList.Columns.Add("Score3", "Môn 3");
             candidateList.Columns.Add("Average", "Trung bình");
 
             DataGridViewComboBoxColumn rankColumn = new DataGridViewComboBoxColumn();
@@ -57,7 +57,6 @@ namespace Group2_Lab01
         private void Bai05_Load(object sender, EventArgs e)
         {
             InitializeDataGridView();
-
             chooseSex.Items.Clear();
             chooseSex.Items.AddRange(new string[] { "Nam", "Nữ" });
             chooseSex.SelectedIndex = 0;
