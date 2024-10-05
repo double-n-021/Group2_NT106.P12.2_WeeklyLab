@@ -20,6 +20,7 @@ namespace Group2_Lab01
         private void btnReadNum_Click(object sender, EventArgs e)
         {
             string[] Ones = { "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín", "Mười", "Mười Một", "Mười Hai", "Mười Ba", "Mười Bốn", "Mười Lăm", "Mười Sáu", "Mười Bảy", "Mười Tám", "Mười Chín" };
+            string[] OnesSpecial = { "Mốt", "Hai", "Ba", "Bốn", "Lăm", "Sáu", "Bảy", "Tám", "Chín" };
             string[] Tens = { "Mười", "Hai Mươi", "Ba Mươi", "Bốn Mươi", "Năm Mươi", "Sáu Mươi", "Bảy Mươi", "Tám Mươi", "Chín Mươi" };
             string[] ThousandScales = { "", "Nghìn", "Triệu", "Tỷ" };
 
@@ -60,7 +61,6 @@ namespace Group2_Lab01
                 }
                 no /= 1000;
                 scaleIndex++;
-                //
             }
 
             if (isNegative)
@@ -90,6 +90,14 @@ namespace Group2_Lab01
                     }
                 }
             }
+            else if (tensAndOnes > 0) // Thêm điều kiện này để xử lý khi không có hàng trăm
+            {
+                result += "Không Trăm ";
+                if (tensAndOnes < 10)
+                {
+                    result += "Lẻ ";
+                }
+            }
 
             if (tensAndOnes > 0)
             {
@@ -103,9 +111,11 @@ namespace Group2_Lab01
                     int ones = tensAndOnes % 10;
 
                     result += Tens[tens - 1];
+
                     if (ones > 0)
                     {
-                        result += " " + Ones[ones - 1];
+                        result += " ";
+                        result += (ones == 1) ? "Mốt" : (ones == 5) ? "Lăm" : Ones[ones - 1];
                     }
                 }
             }
