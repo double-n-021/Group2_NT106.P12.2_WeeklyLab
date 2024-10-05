@@ -90,14 +90,6 @@ namespace Group2_Lab01
                     }
                 }
             }
-            else if (tensAndOnes > 0) // Thêm điều kiện này để xử lý khi không có hàng trăm
-            {
-                result += "Không Trăm ";
-                if (tensAndOnes < 10)
-                {
-                    result += "Lẻ ";
-                }
-            }
 
             if (tensAndOnes > 0)
             {
