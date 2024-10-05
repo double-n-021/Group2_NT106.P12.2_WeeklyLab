@@ -17,102 +17,130 @@ namespace Group2_Lab01
             InitializeComponent();
         }
 
+        string []DIGITS = { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
+        string []UNITS = { "", "Nghìn", "Triệu", "Tỷ" };
+
+        // Hàm đọc hai chữ số (a, b, c)
+        string readTwo(int b, int c, bool hasHundred)
+        {
+            string output = "";
+
+            switch (b)
+            {
+                case 0:
+                    {
+                        if (hasHundred && c == 0)
+                            break;
+                        if (hasHundred)
+                            output += "Lẻ ";
+                        output += DIGITS[c];
+                        break;
+                    }
+                case 1:
+                    {
+                        output += "Mười ";
+                        if (c == 5)
+                            output += "Lăm";
+                        else if (c != 0)
+                            output += DIGITS[c];
+                        break;
+                    }
+                default:
+                    {
+                        output += DIGITS[b] + " Mươi ";
+                        if (c == 1)
+                            output += "Mốt";
+                        else if (c == 5)
+                            output += "Lăm";
+                        else if (c != 0)
+                            output += DIGITS[c];
+                        break;
+                    }
+            }
+
+            return output;
+        }
+
+        // Hàm đọc ba chữ số (a, b, c)
+        string readThree(int a, int b, int c, bool readZeroHundred)
+        {
+            string output = "";
+
+            // Đọc phần trăm (a) trước
+            if (a != 0 || readZeroHundred)
+                output += DIGITS[a] + " Trăm ";
+
+            // Nối thêm phần sau (b, c)
+            output += readTwo(b, c, a != 0 || readZeroHundred);
+
+            return output;
+        }
+
+        // Hàm chính
+        string ReadNumber(string num)
+        {
+            string output = "";
+            int length = num.Length;
+            int groupCount = (length + 2) / 3;  // Số nhóm 3 chữ số
+
+            for (int i = 0; i < groupCount; i++)
+            {
+                int start = length - (i + 1) * 3;
+                int end = start + 3;
+                if (start < 0) start = 0;
+
+                string group = num.Substring(start, end - start);
+                int groupSize = group.Length;
+
+                // Chuyển đổi từng chữ số trong nhóm thành int
+                int a = groupSize > 2 ? group[0] - '0' : 0;
+                int b = groupSize > 1 ? group[groupSize - 2] - '0' : 0;
+                int c = group[groupSize - 1] - '0';
+
+                // Đọc nhóm ba chữ số
+                bool isFirstGroup = (i == groupCount - 1);
+                string groupOutput = readThree(a, b, c, !isFirstGroup);
+
+                // Chỉ thêm đơn vị khi nhóm có giá trị
+                if (!string.IsNullOrEmpty(groupOutput) && (a != 0 || b != 0 || c != 0))
+                {
+                    if (i > 0)
+                    {
+                        output = UNITS[i] + " " + output;
+                    }
+                    output = groupOutput + " " + output;
+                }
+            }
+
+            // Xóa dấu cách thừa ở đầu và cuối chuỗi
+            output = output.Trim();
+
+            return output;
+        }
+
+
         private void btnReadNum_Click(object sender, EventArgs e)
         {
-            string[] Ones = { "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín", "Mười", "Mười Một", "Mười Hai", "Mười Ba", "Mười Bốn", "Mười Lăm", "Mười Sáu", "Mười Bảy", "Mười Tám", "Mười Chín" };
-            string[] OnesSpecial = { "Mốt", "Hai", "Ba", "Bốn", "Lăm", "Sáu", "Bảy", "Tám", "Chín" };
-            string[] Tens = { "Mười", "Hai Mươi", "Ba Mươi", "Bốn Mươi", "Năm Mươi", "Sáu Mươi", "Bảy Mươi", "Tám Mươi", "Chín Mươi" };
-            string[] ThousandScales = { "", "Nghìn", "Triệu", "Tỷ" };
+            long num; //Lưu mã người dùng nhập vào
 
-            long no; //Lưu mã người dùng nhập vào
-
-            if (!long.TryParse(enterNum.Text, out no) || no < -999999999999 || no > 999999999999)
+            if (!long.TryParse(enterNum.Text, out num) || num < -999999999999 || num > 999999999999)
             {
                 MessageBox.Show("Vui lòng nhập số nguyên hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (no == 0)
+            int isNegative = 0;
+            
+            if (num<0) 
             {
-                showResults.Text = "Không";
-                return;
-            }
-            // Kiểm tra và chuyển số âm thành số dương
-            bool isNegative = no < 0;
-            if (isNegative) 
-            {
-                no = Math.Abs(no);
+                isNegative = 1;
+                num = Math.Abs(num);
             }
 
-            string strWords = ""; //Chuỗi rỗng để lưu kết quả cuối cùng
-            int scaleIndex = 0; //Biến để theo dõi nhóm hiện tại là "hàng nghìn", "triệu", hay "tỷ"
-
-            while (no > 0)
-            {
-                int group = (int)(no % 1000); //Mỗi lần lặp, chương trình lấy 3 chữ số cuối của số no (dùng phép toán % 1000 để chia lấy phần dư) và lưu vào biến group
-                if (group > 0 || scaleIndex == 0)
-                {
-                    string groupWords = ReadHundreds(group, Ones, Tens);
-                    if (scaleIndex > 0) //Nếu nhóm 3 chữ số không phải là hàng đơn vị, hàng chục, hàng trăm thì sẽ thêm các từ "Nghìn", "Triệu", "Tỷ" tương ứng.
-                    {
-                        groupWords += " " + ThousandScales[scaleIndex];
-                    }
-                    strWords = groupWords + (strWords.Length > 0 ? " " : "") + strWords;
-                }
-                no /= 1000;
-                scaleIndex++;
-            }
-
-            if (isNegative)
-            {
-                strWords = "Âm " + strWords;
-            }
-
-            showResults.Text = strWords.Trim();
+            string result = num.ToString();
+            if (isNegative == 0) showResults.Text = ReadNumber(result);
+            else showResults.Text = "Âm " + ReadNumber(result);
         }
 
-        private string ReadHundreds(int number, string[] Ones, string[] Tens)
-        {
-            string result = "";
-
-            int hundreds = number / 100;
-            int tensAndOnes = number % 100;
-
-            if (hundreds > 0)
-            {
-                result += Ones[hundreds - 1] + " Trăm";
-                if (tensAndOnes > 0)
-                {
-                    result += " ";
-                    if (tensAndOnes < 10)
-                    {
-                        result += "Lẻ ";
-                    }
-                }
-            }
-
-            if (tensAndOnes > 0)
-            {
-                if (tensAndOnes < 20)
-                {
-                    result += Ones[tensAndOnes - 1];
-                }
-                else
-                {
-                    int tens = tensAndOnes / 10;
-                    int ones = tensAndOnes % 10;
-
-                    result += Tens[tens - 1];
-
-                    if (ones > 0)
-                    {
-                        result += " ";
-                        result += (ones == 1) ? "Mốt" : (ones == 5) ? "Lăm" : Ones[ones - 1];
-                    }
-                }
-            }
-
-            return result;
-        }
     }
 }
