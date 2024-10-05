@@ -43,16 +43,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.candidateList = new System.Windows.Forms.DataGridView();
             this.enterCandidate = new System.Windows.Forms.GroupBox();
+            this.btnStatistics = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.statisticsGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.candidateList)).BeginInit();
             this.enterCandidate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(109, 37);
+            this.txtName.Location = new System.Drawing.Point(107, 42);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(211, 26);
@@ -65,7 +68,7 @@
             this.chooseSex.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.chooseSex.Location = new System.Drawing.Point(109, 68);
+            this.chooseSex.Location = new System.Drawing.Point(107, 73);
             this.chooseSex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chooseSex.Name = "chooseSex";
             this.chooseSex.Size = new System.Drawing.Size(211, 28);
@@ -74,7 +77,7 @@
             // txtScore2
             // 
             this.txtScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore2.Location = new System.Drawing.Point(484, 65);
+            this.txtScore2.Location = new System.Drawing.Point(482, 70);
             this.txtScore2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtScore2.Name = "txtScore2";
             this.txtScore2.Size = new System.Drawing.Size(135, 26);
@@ -83,7 +86,7 @@
             // txtScore1
             // 
             this.txtScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore1.Location = new System.Drawing.Point(484, 34);
+            this.txtScore1.Location = new System.Drawing.Point(482, 39);
             this.txtScore1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtScore1.Name = "txtScore1";
             this.txtScore1.Size = new System.Drawing.Size(135, 26);
@@ -92,7 +95,7 @@
             // txtScore3
             // 
             this.txtScore3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore3.Location = new System.Drawing.Point(484, 96);
+            this.txtScore3.Location = new System.Drawing.Point(482, 101);
             this.txtScore3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtScore3.Name = "txtScore3";
             this.txtScore3.Size = new System.Drawing.Size(135, 26);
@@ -101,7 +104,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(27, 135);
+            this.btnSave.Location = new System.Drawing.Point(25, 141);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 26);
@@ -113,7 +116,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(141, 137);
+            this.btnDelete.Location = new System.Drawing.Point(139, 142);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(92, 25);
@@ -126,7 +129,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 41);
+            this.label2.Location = new System.Drawing.Point(9, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 8;
@@ -136,7 +139,7 @@
             // 
             this.Score3.AutoSize = true;
             this.Score3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Score3.Location = new System.Drawing.Point(376, 100);
+            this.Score3.Location = new System.Drawing.Point(374, 105);
             this.Score3.Name = "Score3";
             this.Score3.Size = new System.Drawing.Size(99, 20);
             this.Score3.TabIndex = 9;
@@ -146,7 +149,7 @@
             // 
             this.Score2.AutoSize = true;
             this.Score2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Score2.Location = new System.Drawing.Point(376, 68);
+            this.Score2.Location = new System.Drawing.Point(374, 73);
             this.Score2.Name = "Score2";
             this.Score2.Size = new System.Drawing.Size(99, 20);
             this.Score2.TabIndex = 10;
@@ -156,7 +159,7 @@
             // 
             this.Score1.AutoSize = true;
             this.Score1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Score1.Location = new System.Drawing.Point(376, 37);
+            this.Score1.Location = new System.Drawing.Point(374, 42);
             this.Score1.Name = "Score1";
             this.Score1.Size = new System.Drawing.Size(99, 20);
             this.Score1.TabIndex = 11;
@@ -166,7 +169,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(59, 73);
+            this.label6.Location = new System.Drawing.Point(57, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 20);
             this.label6.TabIndex = 12;
@@ -176,20 +179,22 @@
             // 
             this.candidateList.BackgroundColor = System.Drawing.Color.MintCream;
             this.candidateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.candidateList.Location = new System.Drawing.Point(12, 238);
+            this.candidateList.Location = new System.Drawing.Point(12, 248);
             this.candidateList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.candidateList.Name = "candidateList";
             this.candidateList.RowHeadersWidth = 51;
             this.candidateList.RowTemplate.Height = 24;
-            this.candidateList.Size = new System.Drawing.Size(1293, 231);
+            this.candidateList.Size = new System.Drawing.Size(1293, 221);
             this.candidateList.TabIndex = 13;
             this.candidateList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.candidateList_CellContentClick);
             // 
             // enterCandidate
             // 
             this.enterCandidate.BackColor = System.Drawing.Color.LightGreen;
+            this.enterCandidate.Controls.Add(this.btnStatistics);
             this.enterCandidate.Controls.Add(this.label2);
             this.enterCandidate.Controls.Add(this.btnDelete);
+            this.enterCandidate.Controls.Add(this.pictureBox2);
             this.enterCandidate.Controls.Add(this.Score3);
             this.enterCandidate.Controls.Add(this.btnSave);
             this.enterCandidate.Controls.Add(this.Score2);
@@ -202,25 +207,47 @@
             this.enterCandidate.Controls.Add(this.chooseSex);
             this.enterCandidate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterCandidate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enterCandidate.Location = new System.Drawing.Point(45, 31);
+            this.enterCandidate.Location = new System.Drawing.Point(40, 31);
             this.enterCandidate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.enterCandidate.Name = "enterCandidate";
             this.enterCandidate.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.enterCandidate.Size = new System.Drawing.Size(739, 180);
+            this.enterCandidate.Size = new System.Drawing.Size(739, 196);
             this.enterCandidate.TabIndex = 14;
             this.enterCandidate.TabStop = false;
             this.enterCandidate.Text = "Nhập Thí Sinh";
             // 
+            // btnStatistics
+            // 
+            this.btnStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistics.Location = new System.Drawing.Point(254, 142);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(92, 25);
+            this.btnStatistics.TabIndex = 13;
+            this.btnStatistics.Text = "Thống kê";
+            this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(933, 31);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(646, 105);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(269, 213);
+            this.pictureBox2.Size = new System.Drawing.Size(93, 88);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
+            // 
+            // statisticsGrid
+            // 
+            this.statisticsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.statisticsGrid.Location = new System.Drawing.Point(804, 31);
+            this.statisticsGrid.Name = "statisticsGrid";
+            this.statisticsGrid.RowHeadersWidth = 51;
+            this.statisticsGrid.RowTemplate.Height = 24;
+            this.statisticsGrid.Size = new System.Drawing.Size(501, 196);
+            this.statisticsGrid.TabIndex = 17;
             // 
             // Bai05
             // 
@@ -228,9 +255,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(1320, 480);
+            this.Controls.Add(this.statisticsGrid);
             this.Controls.Add(this.candidateList);
             this.Controls.Add(this.enterCandidate);
-            this.Controls.Add(this.pictureBox2);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -240,6 +267,7 @@
             this.enterCandidate.ResumeLayout(false);
             this.enterCandidate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,5 +289,7 @@
         private System.Windows.Forms.DataGridView candidateList;
         private System.Windows.Forms.GroupBox enterCandidate;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridView statisticsGrid;
+        private System.Windows.Forms.Button btnStatistics;
     }
 }

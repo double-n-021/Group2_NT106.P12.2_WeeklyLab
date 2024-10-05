@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Group2_Lab01
 {
+
+
     public partial class Bai05 : Form
     {
         private List<Candidate> candidates = new List<Candidate>();
@@ -36,10 +38,23 @@ namespace Group2_Lab01
             sexColumn.Items.AddRange(new string[] { "Nam", "Nữ" });
             candidateList.Columns.Add(sexColumn);
 
-            candidateList.Columns.Add("Score1", "Môn 1");
-            candidateList.Columns.Add("Score2", "Môn 2");
-            candidateList.Columns.Add("Score3", "Môn 3");
-            candidateList.Columns.Add("Average", "Trung bình");
+            // Thêm định dạng số cho các cột điểm
+            var scoreColumns = new[] { "Score1", "Score2", "Score3", "Average" };
+            var scoreHeaders = new[] { "Môn 1", "Môn 2", "Môn 3", "Trung bình" };
+
+            for (int i = 0; i < scoreColumns.Length; i++)
+            {
+                var column = new DataGridViewTextBoxColumn
+                {
+                    Name = scoreColumns[i],
+                    HeaderText = scoreHeaders[i],
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "F2" // Định dạng số thập phân với 2 chữ số sau dấu phẩy
+                    }
+                };
+                candidateList.Columns.Add(column);
+            }
 
             DataGridViewComboBoxColumn rankColumn = new DataGridViewComboBoxColumn();
             rankColumn.Name = "Rank";
@@ -64,15 +79,38 @@ namespace Group2_Lab01
 
         private bool ValidateInput()
         {
+            // Kiểm tra tên có ký tự đặc biệt không
+            string specialChars = @"!@#$%^&*()_+=\[{\]};:<>|./?,-";
+            bool hasSpecialChar = txtName.Text.Any(c => specialChars.Contains(c));
+
+            if (hasSpecialChar)
+            {
+                MessageBox.Show("Tên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+                return false;
+            }
+
+            // Kiểm tra nếu tên chứa chữ số
+            bool hasDigit = txtName.Text.Any(c => char.IsDigit(c));
+
+            if (hasDigit)
+            {
+                MessageBox.Show("Tên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txtName.Text) || txtName.Text.Length > 30)
             {
-                MessageBox.Show("Họ và tên không hợp lệ (tối đa 30 ký tự)!");
+                MessageBox.Show("Họ và tên không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
                 return false;
             }
 
             if (chooseSex.SelectedIndex == -1)
             {
-                MessageBox.Show("Vui lòng chọn giới tính!");
+                MessageBox.Show("Vui lòng chọn giới tính!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                chooseSex.Focus();
                 return false;
             }
 
@@ -80,11 +118,12 @@ namespace Group2_Lab01
                 !float.TryParse(txtScore2.Text, out float score2) || score2 < 0 || score2 > 10 ||
                 !float.TryParse(txtScore3.Text, out float score3) || score3 < 0 || score3 > 10)
             {
-                MessageBox.Show("Điểm không hợp lệ. Hãy nhập lại!");
+                MessageBox.Show("Điểm không hợp lệ. Hãy nhập lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtScore1.Focus();
                 return false;
             }
-
             return true;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -99,6 +138,8 @@ namespace Group2_Lab01
                 string id = $"TS{ID:D3}";
                 string name = txtName.Text;
                 string sex = chooseSex.SelectedItem.ToString();
+
+                // Làm tròn điểm đến 1 chữ số thập phân
                 float score1 = (float)Math.Round(float.Parse(txtScore1.Text), 1);
                 float score2 = (float)Math.Round(float.Parse(txtScore2.Text), 1);
                 float score3 = (float)Math.Round(float.Parse(txtScore3.Text), 1);
@@ -111,9 +152,17 @@ namespace Group2_Lab01
                     InitializeDataGridView();
                 }
 
-                int rowIndex = candidateList.Rows.Add(candidate.ID, candidate.Name, candidate.Sex,
-                    candidate.Score1, candidate.Score2, candidate.Score3,
-                    candidate.AverageScore, candidate.Rank);
+                // Hiển thị điểm với định dạng số thập phân
+                int rowIndex = candidateList.Rows.Add(
+                    candidate.ID,
+                    candidate.Name,
+                    candidate.Sex,
+                    candidate.Score1.ToString("F1"),
+                    candidate.Score2.ToString("F1"),
+                    candidate.Score3.ToString("F1"),
+                    candidate.AverageScore.ToString("F1"),
+                    candidate.Rank
+                );
 
                 // Gán giá trị vào cột giới tính (ComboBox)
                 DataGridViewComboBoxCell sexCell = (DataGridViewComboBoxCell)candidateList.Rows[rowIndex].Cells["Sex"];
@@ -131,50 +180,6 @@ namespace Group2_Lab01
             {
                 MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-        private void candidateList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == candidateList.Columns["Delete"].Index)
-            {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa thí sinh này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string id = candidateList.Rows[e.RowIndex].Cells["ID"].Value.ToString();
-
-                    // Xóa khỏi danh sách candidates
-                    Candidate candidateToRemove = candidates.FirstOrDefault(c => c.ID == id);
-                    if (candidateToRemove != null)
-                    {
-                        candidates.Remove(candidateToRemove);
-                    }
-
-                    // Xóa khỏi DataGridView
-                    candidateList.Rows.RemoveAt(e.RowIndex);
-
-                    MessageBox.Show("Đã xóa thí sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            int totalCandidates = candidates.Count;
-            string topCandidate = candidates.OrderByDescending(c => c.AverageScore).FirstOrDefault()?.Name ?? "Không có";
-            int excellentCount = candidates.Count(c => c.Rank == "Giỏi");
-            int goodCount = candidates.Count(c => c.Rank == "Khá");
-            int averageCount = candidates.Count(c => c.Rank == "Trung Bình");
-            int failCount = candidates.Count(c => c.Rank == "Yếu" || c.Rank == "Kém");
-
-            string message = $"Tổng số thí sinh: {totalCandidates}\n" +
-                             $"Thí sinh có điểm trung bình cao nhất: {topCandidate}\n" +
-                             $"Số lượng thí sinh xếp loại Giỏi: {excellentCount}\n" +
-                             $"Số lượng thí sinh xếp loại Khá: {goodCount}\n" +
-                             $"Số lượng thí sinh xếp loại Trung Bình: {averageCount}\n" +
-                             $"Số lượng thí sinh không đạt: {failCount}";
-
-            MessageBox.Show(message, "Thống kê");
         }
 
         public class Candidate
@@ -215,36 +220,96 @@ namespace Group2_Lab01
                 CalculateOverallAndRank();
             }
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedCandidates();
+        }
+
+        private void candidateList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Kiểm tra xem người dùng có nhấn vào cột "Xóa" hay không
+            if (e.RowIndex >= 0 && e.ColumnIndex == candidateList.Columns["Delete"].Index)
+            {
+                // Kiểm tra nếu hàng được click không phải là hàng trống cuối cùng
+                if (!candidateList.Rows[e.RowIndex].IsNewRow)
+                {
+                    // Chọn hàng hiện tại để thao tác xóa
+                    candidateList.ClearSelection();
+                    candidateList.Rows[e.RowIndex].Selected = true;
+
+                    // Thực hiện xóa hàng
+                    DeleteSelectedCandidates();
+                }
+            }
+        }
+
+        private void DeleteSelectedCandidates()
         {
             if (candidateList.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa thí sinh đã chọn?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                // Hiển thị MessageBox với Yes, No và Cancel chỉ một lần
+                DialogResult result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn xóa các thí sinh đã chọn?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
                 if (result == DialogResult.Yes)
                 {
+                    // Người dùng chọn Yes -> Xóa tất cả các hàng được chọn
                     foreach (DataGridViewRow row in candidateList.SelectedRows)
                     {
-                        string id = row.Cells["ID"].Value.ToString();
-
-                        // Xóa khỏi danh sách candidates
-                        Candidate candidateToRemove = candidates.FirstOrDefault(c => c.ID == id);
-                        if (candidateToRemove != null)
+                        if (!row.IsNewRow)
                         {
-                            candidates.Remove(candidateToRemove);
+                            string id = row.Cells["ID"].Value.ToString();
+
+                            // Xóa khỏi danh sách candidates
+                            Candidate candidateToRemove = candidates.FirstOrDefault(c => c.ID == id);
+                            if (candidateToRemove != null)
+                            {
+                                candidates.Remove(candidateToRemove);
+                            }
+
+                            // Xóa khỏi DataGridView
+                            candidateList.Rows.Remove(row);
                         }
-
-                        // Xóa khỏi DataGridView
-                        candidateList.Rows.Remove(row);
                     }
-
-                    MessageBox.Show("Đã xóa thí sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Đã xóa các thí sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (result == DialogResult.No)
+                {
+                    // Người dùng chọn No hoặc Cancel -> Không làm gì
                 }
             }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn thí sinh cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+                // Xóa sạch các cột và hàng hiện tại trong DataGridView
+                statisticsGrid.Columns.Clear();
+                statisticsGrid.Rows.Clear();
+
+                // Thêm cột hiển thị thông tin
+                statisticsGrid.Columns.Add("Statistics", "Thông tin thống kê");
+                statisticsGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                // Tính toán các giá trị thống kê
+                int totalCandidates = candidates.Count;
+                string topCandidate = candidates.OrderByDescending(c => c.AverageScore).FirstOrDefault()?.Name ?? "Không có";
+                int excellentCount = candidates.Count(c => c.Rank == "Giỏi");
+                int goodCount = candidates.Count(c => c.Rank == "Khá");
+                int averageCount = candidates.Count(c => c.Rank == "Trung Bình");
+                int failCount = candidates.Count(c => c.Rank == "Yếu" || c.Rank == "Kém");
+
+                // Thêm các hàng thông tin vào DataGridView
+                statisticsGrid.Rows.Add($"Tổng số thí sinh: {totalCandidates}");
+                statisticsGrid.Rows.Add($"Thí sinh có điểm trung bình cao nhất: {topCandidate}");
+                statisticsGrid.Rows.Add($"Số lượng thí sinh xếp loại Giỏi: {excellentCount}");
+                statisticsGrid.Rows.Add($"Số lượng thí sinh xếp loại Khá: {goodCount}");
+                statisticsGrid.Rows.Add($"Số lượng thí sinh xếp loại Trung Bình: {averageCount}");
+                statisticsGrid.Rows.Add($"Số lượng thí sinh không đạt: {failCount}");
         }
     }
 }
