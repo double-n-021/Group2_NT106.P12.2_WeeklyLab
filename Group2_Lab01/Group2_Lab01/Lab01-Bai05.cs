@@ -48,10 +48,6 @@ namespace Group2_Lab01
                 {
                     Name = scoreColumns[i],
                     HeaderText = scoreHeaders[i],
-                    DefaultCellStyle = new DataGridViewCellStyle
-                    {
-                        Format = "F2" // Định dạng số thập phân với 2 chữ số sau dấu phẩy
-                    }
                 };
                 candidateList.Columns.Add(column);
             }
@@ -160,7 +156,7 @@ namespace Group2_Lab01
                     candidate.Score1.ToString("F1"),
                     candidate.Score2.ToString("F1"),
                     candidate.Score3.ToString("F1"),
-                    candidate.AverageScore.ToString("F1"),
+                    candidate.AverageScore.ToString("F2"),
                     candidate.Rank
                 );
 
@@ -297,7 +293,7 @@ namespace Group2_Lab01
 
                 // Tính toán các giá trị thống kê
                 int totalCandidates = candidates.Count;
-                string topCandidate = candidates.OrderByDescending(c => c.AverageScore).FirstOrDefault()?.Name ?? "Không có";
+                string topCandidate = candidates.OrderByDescending(c => c.AverageScore).FirstOrDefault()?.ID ?? "Không có";
                 int excellentCount = candidates.Count(c => c.Rank == "Giỏi");
                 int goodCount = candidates.Count(c => c.Rank == "Khá");
                 int averageCount = candidates.Count(c => c.Rank == "Trung Bình");
