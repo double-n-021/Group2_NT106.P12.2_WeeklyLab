@@ -49,9 +49,15 @@ namespace Group2_Lab02
 
             fileCount++;
             string outputPath = Path.Combine("D:\\", $"output{fileCount}.txt");
+            
+            while(File.Exists(outputPath)) 
+            {
+                fileCount++;
+                outputPath = Path.Combine("D:\\", $"output{fileCount}.txt");
+            }
 
             try
-            {
+                {
                 using (StreamWriter sw = new StreamWriter(outputPath))
                 {
                     sw.Write(upperContent);
