@@ -52,6 +52,12 @@
     <Compile Include="Lab02-Bai01.Designer.cs">
       <DependentUpon>Lab02-Bai01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab02_Bai05.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab02_Bai05.Designer.cs">
+      <DependentUpon>Lab02_Bai05.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab02_Control.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Lab02-Bai01.resx">
       <DependentUpon>Lab02-Bai01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab02_Bai05.resx">
+      <DependentUpon>Lab02_Bai05.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab02_Control.resx">
       <DependentUpon>Lab02_Control.cs</DependentUpon>

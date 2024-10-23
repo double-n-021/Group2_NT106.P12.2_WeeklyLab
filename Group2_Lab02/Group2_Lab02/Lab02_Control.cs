@@ -25,7 +25,6 @@ namespace Group2_Lab02
 
         private void btnBai02_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnBai03_Click(object sender, EventArgs e)
@@ -40,7 +39,8 @@ namespace Group2_Lab02
 
         private void btnBai05_Click(object sender, EventArgs e)
         {
-
+            Bai05 formBai05 = new Bai05();
+            formBai05.Show();
         }
     }
 }
