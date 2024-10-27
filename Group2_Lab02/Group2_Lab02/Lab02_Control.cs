@@ -25,11 +25,14 @@ namespace Group2_Lab02
 
         private void btnBai02_Click(object sender, EventArgs e)
         {
+            Bai02 formBai02 = new Bai02();
+            formBai02.Show();
         }
 
         private void btnBai03_Click(object sender, EventArgs e)
         {
-
+            Bai03 formBai03 = new Bai03();
+            formBai03.Show();
         }
 
         private void btnBai04_Click(object sender, EventArgs e)
