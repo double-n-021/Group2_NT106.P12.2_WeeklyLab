@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bai03));
             this.txtInput = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnReadFile = new System.Windows.Forms.Button();
@@ -40,29 +41,32 @@
             // txtInput
             // 
             this.txtInput.Font = new System.Drawing.Font("Consolas", 10F);
-            this.txtInput.Location = new System.Drawing.Point(12, 35);
+            this.txtInput.Location = new System.Drawing.Point(24, 68);
+            this.txtInput.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtInput.Multiline = true;
             this.txtInput.Name = "txtInput";
             this.txtInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInput.Size = new System.Drawing.Size(776, 150);
+            this.txtInput.Size = new System.Drawing.Size(1548, 287);
             this.txtInput.TabIndex = 0;
             // 
             // txtOutput
             // 
             this.txtOutput.Font = new System.Drawing.Font("Consolas", 10F);
-            this.txtOutput.Location = new System.Drawing.Point(12, 226);
+            this.txtOutput.Location = new System.Drawing.Point(24, 438);
+            this.txtOutput.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutput.Size = new System.Drawing.Size(776, 150);
+            this.txtOutput.Size = new System.Drawing.Size(1548, 287);
             this.txtOutput.TabIndex = 1;
             // 
             // btnReadFile
             // 
-            this.btnReadFile.Location = new System.Drawing.Point(12, 390);
+            this.btnReadFile.Location = new System.Drawing.Point(24, 756);
+            this.btnReadFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(120, 30);
+            this.btnReadFile.Size = new System.Drawing.Size(240, 58);
             this.btnReadFile.TabIndex = 2;
             this.btnReadFile.Text = "Read File";
             this.btnReadFile.UseVisualStyleBackColor = true;
@@ -70,9 +74,10 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(142, 390);
+            this.btnCalculate.Location = new System.Drawing.Point(284, 756);
+            this.btnCalculate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(120, 30);
+            this.btnCalculate.Size = new System.Drawing.Size(240, 58);
             this.btnCalculate.TabIndex = 3;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
@@ -80,9 +85,10 @@
             // 
             // btnSaveFile
             // 
-            this.btnSaveFile.Location = new System.Drawing.Point(272, 390);
+            this.btnSaveFile.Location = new System.Drawing.Point(544, 756);
+            this.btnSaveFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(120, 30);
+            this.btnSaveFile.Size = new System.Drawing.Size(240, 58);
             this.btnSaveFile.TabIndex = 4;
             this.btnSaveFile.Text = "Save File";
             this.btnSaveFile.UseVisualStyleBackColor = true;
@@ -92,9 +98,10 @@
             // 
             this.lblInput.AutoSize = true;
             this.lblInput.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInput.Location = new System.Drawing.Point(12, 8);
+            this.lblInput.Location = new System.Drawing.Point(24, 16);
+            this.lblInput.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblInput.Name = "lblInput";
-            this.lblInput.Size = new System.Drawing.Size(71, 24);
+            this.lblInput.Size = new System.Drawing.Size(138, 49);
             this.lblInput.TabIndex = 5;
             this.lblInput.Text = "Input:";
             // 
@@ -102,17 +109,19 @@
             // 
             this.lblOutput.AutoSize = true;
             this.lblOutput.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Bold);
-            this.lblOutput.Location = new System.Drawing.Point(12, 198);
+            this.lblOutput.Location = new System.Drawing.Point(24, 384);
+            this.lblOutput.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(88, 24);
+            this.lblOutput.Size = new System.Drawing.Size(170, 49);
             this.lblOutput.TabIndex = 6;
             this.lblOutput.Text = "Output:";
             // 
             // Bai03
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 431);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1598, 835);
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.lblInput);
             this.Controls.Add(this.btnSaveFile);
@@ -120,8 +129,10 @@
             this.Controls.Add(this.btnReadFile);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.txtInput);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Bai03";
-            this.Text = "Read, write files and calculate";
+            this.Text = "Bài 03 Read, write files and calculate";
             this.ResumeLayout(false);
             this.PerformLayout();
 

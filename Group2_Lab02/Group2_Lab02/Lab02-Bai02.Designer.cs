@@ -45,6 +45,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bai02));
             this.btnExit = new System.Windows.Forms.Button();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.txtSize = new System.Windows.Forms.TextBox();
@@ -64,10 +65,12 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.LightGreen;
-            this.btnExit.Location = new System.Drawing.Point(20, 370);
+            this.btnExit.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(40, 717);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(260, 35);
+            this.btnExit.Size = new System.Drawing.Size(520, 68);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -75,129 +78,152 @@
             // 
             // txtFileName
             // 
-            this.txtFileName.Location = new System.Drawing.Point(20, 80);
+            this.txtFileName.Location = new System.Drawing.Point(40, 155);
+            this.txtFileName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(260, 22);
+            this.txtFileName.Size = new System.Drawing.Size(516, 38);
             this.txtFileName.TabIndex = 4;
             // 
             // txtSize
             // 
-            this.txtSize.Location = new System.Drawing.Point(20, 130);
+            this.txtSize.Location = new System.Drawing.Point(40, 252);
+            this.txtSize.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(260, 22);
+            this.txtSize.Size = new System.Drawing.Size(516, 38);
             this.txtSize.TabIndex = 6;
             // 
             // txtURL
             // 
-            this.txtURL.Location = new System.Drawing.Point(20, 180);
+            this.txtURL.Location = new System.Drawing.Point(40, 349);
+            this.txtURL.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(260, 22);
+            this.txtURL.Size = new System.Drawing.Size(516, 38);
             this.txtURL.TabIndex = 8;
             // 
             // txtLineCount
             // 
-            this.txtLineCount.Location = new System.Drawing.Point(20, 230);
+            this.txtLineCount.Location = new System.Drawing.Point(40, 446);
+            this.txtLineCount.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtLineCount.Name = "txtLineCount";
-            this.txtLineCount.Size = new System.Drawing.Size(260, 22);
+            this.txtLineCount.Size = new System.Drawing.Size(516, 38);
             this.txtLineCount.TabIndex = 10;
             // 
             // txtWordCount
             // 
-            this.txtWordCount.Location = new System.Drawing.Point(20, 280);
+            this.txtWordCount.Location = new System.Drawing.Point(40, 542);
+            this.txtWordCount.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtWordCount.Name = "txtWordCount";
-            this.txtWordCount.Size = new System.Drawing.Size(260, 22);
+            this.txtWordCount.Size = new System.Drawing.Size(516, 38);
             this.txtWordCount.TabIndex = 12;
             // 
             // txtCharCount
             // 
-            this.txtCharCount.Location = new System.Drawing.Point(20, 330);
+            this.txtCharCount.Location = new System.Drawing.Point(40, 639);
+            this.txtCharCount.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtCharCount.Name = "txtCharCount";
-            this.txtCharCount.Size = new System.Drawing.Size(260, 22);
+            this.txtCharCount.Size = new System.Drawing.Size(516, 38);
             this.txtCharCount.TabIndex = 14;
             // 
             // rtbContent
             // 
-            this.rtbContent.Location = new System.Drawing.Point(300, 20);
+            this.rtbContent.Location = new System.Drawing.Point(600, 39);
+            this.rtbContent.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rtbContent.Name = "rtbContent";
-            this.rtbContent.Size = new System.Drawing.Size(470, 385);
+            this.rtbContent.Size = new System.Drawing.Size(936, 742);
             this.rtbContent.TabIndex = 15;
             this.rtbContent.Text = "";
             // 
             // lblFileName
             // 
             this.lblFileName.AutoSize = true;
+            this.lblFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFileName.ForeColor = System.Drawing.Color.Blue;
-            this.lblFileName.Location = new System.Drawing.Point(20, 60);
+            this.lblFileName.Location = new System.Drawing.Point(40, 116);
+            this.lblFileName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(66, 16);
+            this.lblFileName.Size = new System.Drawing.Size(148, 32);
             this.lblFileName.TabIndex = 3;
             this.lblFileName.Text = "File name";
             // 
             // lblSize
             // 
             this.lblSize.AutoSize = true;
+            this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSize.ForeColor = System.Drawing.Color.Blue;
-            this.lblSize.Location = new System.Drawing.Point(20, 110);
+            this.lblSize.Location = new System.Drawing.Point(40, 213);
+            this.lblSize.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(33, 16);
+            this.lblSize.Size = new System.Drawing.Size(74, 32);
             this.lblSize.TabIndex = 5;
             this.lblSize.Text = "Size";
             // 
             // lblURL
             // 
             this.lblURL.AutoSize = true;
+            this.lblURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblURL.ForeColor = System.Drawing.Color.Blue;
-            this.lblURL.Location = new System.Drawing.Point(20, 160);
+            this.lblURL.Location = new System.Drawing.Point(40, 310);
+            this.lblURL.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(34, 16);
+            this.lblURL.Size = new System.Drawing.Size(73, 32);
             this.lblURL.TabIndex = 7;
             this.lblURL.Text = "URL";
             // 
             // lblLineCount
             // 
             this.lblLineCount.AutoSize = true;
+            this.lblLineCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLineCount.ForeColor = System.Drawing.Color.Blue;
-            this.lblLineCount.Location = new System.Drawing.Point(20, 210);
+            this.lblLineCount.Location = new System.Drawing.Point(40, 407);
+            this.lblLineCount.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblLineCount.Name = "lblLineCount";
-            this.lblLineCount.Size = new System.Drawing.Size(67, 16);
+            this.lblLineCount.Size = new System.Drawing.Size(156, 32);
             this.lblLineCount.TabIndex = 9;
             this.lblLineCount.Text = "Line count";
             // 
             // lblWordCount
             // 
             this.lblWordCount.AutoSize = true;
+            this.lblWordCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWordCount.ForeColor = System.Drawing.Color.Blue;
-            this.lblWordCount.Location = new System.Drawing.Point(20, 260);
+            this.lblWordCount.Location = new System.Drawing.Point(40, 504);
+            this.lblWordCount.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblWordCount.Name = "lblWordCount";
-            this.lblWordCount.Size = new System.Drawing.Size(82, 16);
+            this.lblWordCount.Size = new System.Drawing.Size(183, 32);
             this.lblWordCount.TabIndex = 11;
             this.lblWordCount.Text = "Words count";
             // 
             // lblCharCount
             // 
             this.lblCharCount.AutoSize = true;
+            this.lblCharCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCharCount.ForeColor = System.Drawing.Color.Blue;
-            this.lblCharCount.Location = new System.Drawing.Point(20, 310);
+            this.lblCharCount.Location = new System.Drawing.Point(40, 601);
+            this.lblCharCount.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCharCount.Name = "lblCharCount";
-            this.lblCharCount.Size = new System.Drawing.Size(100, 16);
+            this.lblCharCount.Size = new System.Drawing.Size(230, 32);
             this.lblCharCount.TabIndex = 13;
             this.lblCharCount.Text = "Character count";
             // 
             // btnReadFile
             // 
-            this.btnReadFile.Location = new System.Drawing.Point(20, 20);
+            this.btnReadFile.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnReadFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReadFile.Location = new System.Drawing.Point(40, 39);
+            this.btnReadFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(260, 37);
+            this.btnReadFile.Size = new System.Drawing.Size(520, 72);
             this.btnReadFile.TabIndex = 16;
             this.btnReadFile.Text = "Read from File ";
-            this.btnReadFile.UseVisualStyleBackColor = true;
+            this.btnReadFile.UseVisualStyleBackColor = false;
             this.btnReadFile.Click += new System.EventHandler(this.btnReadFile_Click);
             // 
             // Bai02
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 423);
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.ClientSize = new System.Drawing.Size(1564, 820);
             this.Controls.Add(this.btnReadFile);
             this.Controls.Add(this.rtbContent);
             this.Controls.Add(this.txtCharCount);
@@ -213,9 +239,12 @@
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnExit);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.MaximizeBox = false;
             this.Name = "Bai02";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lab02_Bai02";
+            this.Text = "Bài 02 Read From File";
             this.ResumeLayout(false);
             this.PerformLayout();
 
