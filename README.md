@@ -1,4 +1,4 @@
-# Group2_NT106.P12.2_WeeklyLab
+## Group2_NT106.P12.2_WeeklyLab 📚✏️
 Submit_weekly_labs_for_NT106
 
 ## 👥 Thành viên nhóm
