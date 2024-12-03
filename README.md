@@ -1,5 +1,6 @@
 ## Group2_NT106.P12.2_WeeklyLab 📚✏️
 Submit_weekly_labs_for_NT106
+Lecturer: Văn Thiên Luân
 
 ## 👥 Thành viên nhóm
 | MSSV     | Họ và Tên              | 
