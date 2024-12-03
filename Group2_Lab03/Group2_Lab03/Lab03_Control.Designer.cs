@@ -37,7 +37,7 @@
             // 
             // btnBai01
             // 
-            this.btnBai01.Location = new System.Drawing.Point(70, 57);
+            this.btnBai01.Location = new System.Drawing.Point(116, 53);
             this.btnBai01.Name = "btnBai01";
             this.btnBai01.Size = new System.Drawing.Size(112, 65);
             this.btnBai01.TabIndex = 0;
@@ -47,45 +47,49 @@
             // 
             // btnBai03
             // 
-            this.btnBai03.Location = new System.Drawing.Point(70, 166);
+            this.btnBai03.Location = new System.Drawing.Point(65, 162);
             this.btnBai03.Name = "btnBai03";
             this.btnBai03.Size = new System.Drawing.Size(112, 65);
             this.btnBai03.TabIndex = 1;
             this.btnBai03.Text = "Bài 03";
             this.btnBai03.UseVisualStyleBackColor = true;
+            this.btnBai03.Click += new System.EventHandler(this.btnBai03_Click);
             // 
             // btnBai02
             // 
-            this.btnBai02.Location = new System.Drawing.Point(371, 57);
+            this.btnBai02.Location = new System.Drawing.Point(318, 53);
             this.btnBai02.Name = "btnBai02";
             this.btnBai02.Size = new System.Drawing.Size(112, 65);
             this.btnBai02.TabIndex = 2;
             this.btnBai02.Text = "Bài 02";
             this.btnBai02.UseVisualStyleBackColor = true;
+            this.btnBai02.Click += new System.EventHandler(this.btnBai02_Click);
             // 
             // btnBai04
             // 
-            this.btnBai04.Location = new System.Drawing.Point(371, 166);
+            this.btnBai04.Location = new System.Drawing.Point(366, 162);
             this.btnBai04.Name = "btnBai04";
             this.btnBai04.Size = new System.Drawing.Size(112, 65);
             this.btnBai04.TabIndex = 3;
             this.btnBai04.Text = "Bài 04";
             this.btnBai04.UseVisualStyleBackColor = true;
+            this.btnBai04.Click += new System.EventHandler(this.btnBai04_Click);
             // 
             // btnBai05
             // 
-            this.btnBai05.Location = new System.Drawing.Point(220, 267);
+            this.btnBai05.Location = new System.Drawing.Point(214, 245);
             this.btnBai05.Name = "btnBai05";
             this.btnBai05.Size = new System.Drawing.Size(112, 65);
             this.btnBai05.TabIndex = 4;
             this.btnBai05.Text = "Bài 05";
             this.btnBai05.UseVisualStyleBackColor = true;
+            this.btnBai05.Click += new System.EventHandler(this.btnBai05_Click);
             // 
             // Lab03_Control
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 367);
+            this.ClientSize = new System.Drawing.Size(548, 359);
             this.Controls.Add(this.btnBai05);
             this.Controls.Add(this.btnBai04);
             this.Controls.Add(this.btnBai02);

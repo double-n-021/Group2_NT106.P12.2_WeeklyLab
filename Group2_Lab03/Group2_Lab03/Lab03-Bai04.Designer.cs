@@ -1,6 +1,6 @@
 ﻿namespace Group2_Lab03
 {
-    partial class Bai01
+    partial class Bai04
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnServer = new System.Windows.Forms.Button();
             this.btnClient = new System.Windows.Forms.Button();
+            this.btnServer = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnServer
-            // 
-            this.btnServer.Location = new System.Drawing.Point(12, 26);
-            this.btnServer.Name = "btnServer";
-            this.btnServer.Size = new System.Drawing.Size(134, 36);
-            this.btnServer.TabIndex = 0;
-            this.btnServer.Text = "UDP Server";
-            this.btnServer.UseVisualStyleBackColor = true;
-            this.btnServer.Click += new System.EventHandler(this.btnServer_Click);
             // 
             // btnClient
             // 
-            this.btnClient.Location = new System.Drawing.Point(195, 26);
+            this.btnClient.Location = new System.Drawing.Point(235, 50);
             this.btnClient.Name = "btnClient";
             this.btnClient.Size = new System.Drawing.Size(134, 36);
-            this.btnClient.TabIndex = 1;
-            this.btnClient.Text = "UDP Client";
+            this.btnClient.TabIndex = 3;
+            this.btnClient.Text = "TCP Client";
             this.btnClient.UseVisualStyleBackColor = true;
             this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
             // 
-            // Bai01
+            // btnServer
+            // 
+            this.btnServer.Location = new System.Drawing.Point(55, 50);
+            this.btnServer.Name = "btnServer";
+            this.btnServer.Size = new System.Drawing.Size(134, 36);
+            this.btnServer.TabIndex = 2;
+            this.btnServer.Text = "TCP Server";
+            this.btnServer.UseVisualStyleBackColor = true;
+            this.btnServer.Click += new System.EventHandler(this.btnServer_Click);
+            // 
+            // Bai04
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 90);
+            this.ClientSize = new System.Drawing.Size(430, 138);
             this.Controls.Add(this.btnClient);
             this.Controls.Add(this.btnServer);
-            this.Name = "Bai01";
-            this.Text = "Dashboard_Bai01";
+            this.Name = "Bai04";
+            this.Text = "Dashboard_Bai04";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnServer;
         private System.Windows.Forms.Button btnClient;
-
+        private System.Windows.Forms.Button btnServer;
     }
 }

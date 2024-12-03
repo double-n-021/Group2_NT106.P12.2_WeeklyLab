@@ -22,5 +22,26 @@ namespace Group2_Lab03
             Bai01 formBai01 = new Bai01();
             formBai01.Show();
         }
+
+        private void btnBai02_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBai03_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBai04_Click(object sender, EventArgs e)
+        {
+            Bai04 formBai04 = new Bai04();
+            formBai04.Show(); 
+        }
+
+        private void btnBai05_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

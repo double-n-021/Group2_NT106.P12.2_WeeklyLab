@@ -52,11 +52,29 @@
     <Compile Include="Bai01-Client.Designer.cs">
       <DependentUpon>Bai01-Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bai04-Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai04-Client.Designer.cs">
+      <DependentUpon>Bai04-Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bai04-Server.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai04-Server.Designer.cs">
+      <DependentUpon>Bai04-Server.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab03-Bai01.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab03-Bai01.Designer.cs">
       <DependentUpon>Lab03-Bai01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab03-Bai04.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab03-Bai04.Designer.cs">
+      <DependentUpon>Lab03-Bai04.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab03_Control.cs">
       <SubType>Form</SubType>
@@ -78,8 +96,17 @@
     <EmbeddedResource Include="Bai01-Server.resx">
       <DependentUpon>Bai01-Server.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bai04-Client.resx">
+      <DependentUpon>Bai04-Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bai04-Server.resx">
+      <DependentUpon>Bai04-Server.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab03-Bai01.resx">
       <DependentUpon>Lab03-Bai01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab03-Bai04.resx">
+      <DependentUpon>Lab03-Bai04.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab03_Control.resx">
       <DependentUpon>Lab03_Control.cs</DependentUpon>
