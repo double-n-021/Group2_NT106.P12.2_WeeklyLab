@@ -49,7 +49,7 @@
             // 
             // btnClient
             // 
-            this.btnClient.Location = new System.Drawing.Point(767, 221);
+            this.btnClient.Location = new System.Drawing.Point(767, 193);
             this.btnClient.Name = "btnClient";
             this.btnClient.Size = new System.Drawing.Size(370, 165);
             this.btnClient.TabIndex = 5;

@@ -116,9 +116,6 @@ namespace Group2_Lab03
                         break;
                     }
 
-
-
-
                     string[] parts = data.Split(',');
 
                     if (parts.Length < 3)
