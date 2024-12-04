@@ -1,6 +1,6 @@
 ﻿namespace Group2_Lab03
 {
-    partial class Bai04_Server
+    partial class Bai03_Server
     {
         /// <summary>
         /// Required designer variable.
@@ -28,44 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lvMessage = new System.Windows.Forms.ListView();
             this.btListen = new System.Windows.Forms.Button();
-            this.rtbMessage = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
+            // 
+            // lvMessage
+            // 
+            this.lvMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvMessage.HideSelection = false;
+            this.lvMessage.Location = new System.Drawing.Point(12, 49);
+            this.lvMessage.Name = "lvMessage";
+            this.lvMessage.Size = new System.Drawing.Size(430, 252);
+            this.lvMessage.TabIndex = 14;
+            this.lvMessage.UseCompatibleStateImageBehavior = false;
+            this.lvMessage.View = System.Windows.Forms.View.List;
             // 
             // btListen
             // 
-            this.btListen.Location = new System.Drawing.Point(312, 12);
+            this.btListen.Location = new System.Drawing.Point(313, 12);
             this.btListen.Name = "btListen";
             this.btListen.Size = new System.Drawing.Size(131, 31);
-            this.btListen.TabIndex = 15;
+            this.btListen.TabIndex = 13;
             this.btListen.Text = "Listen";
             this.btListen.UseVisualStyleBackColor = true;
             this.btListen.Click += new System.EventHandler(this.btListen_Click);
             // 
-            // rtbMessage
-            // 
-            this.rtbMessage.Location = new System.Drawing.Point(11, 49);
-            this.rtbMessage.Name = "rtbMessage";
-            this.rtbMessage.ReadOnly = true;
-            this.rtbMessage.Size = new System.Drawing.Size(432, 252);
-            this.rtbMessage.TabIndex = 17;
-            this.rtbMessage.Text = "";
-            // 
-            // Bai04_Server
+            // Bai03_Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 313);
-            this.Controls.Add(this.rtbMessage);
+            this.ClientSize = new System.Drawing.Size(454, 313);
+            this.Controls.Add(this.lvMessage);
             this.Controls.Add(this.btListen);
-            this.Name = "Bai04_Server";
+            this.Name = "Bai03_Server";
             this.Text = "Server";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView lvMessage;
         private System.Windows.Forms.Button btListen;
-        private System.Windows.Forms.RichTextBox rtbMessage;
     }
 }

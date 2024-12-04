@@ -28,144 +28,148 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rtbChat = new System.Windows.Forms.RichTextBox();
-            this.rtbListParticipants = new System.Windows.Forms.RichTextBox();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.tbMess = new System.Windows.Forms.TextBox();
-            this.btnConnect = new System.Windows.Forms.Button();
-            this.btnSend = new System.Windows.Forms.Button();
+            this.rtbMessage = new System.Windows.Forms.RichTextBox();
+            this.btConnect = new System.Windows.Forms.Button();
+            this.lvParticipants = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbYourName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbListParticipants = new System.Windows.Forms.ComboBox();
+            this.tbMessage = new System.Windows.Forms.TextBox();
+            this.btSend = new System.Windows.Forms.Button();
+            this.btSendFile = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnSendFile = new System.Windows.Forms.Button();
+            this.tbYourFriendName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // rtbChat
+            // rtbMessage
             // 
-            this.rtbChat.Location = new System.Drawing.Point(12, 12);
-            this.rtbChat.Name = "rtbChat";
-            this.rtbChat.Size = new System.Drawing.Size(526, 200);
-            this.rtbChat.TabIndex = 0;
-            this.rtbChat.Text = "";
+            this.rtbMessage.Location = new System.Drawing.Point(12, 12);
+            this.rtbMessage.Name = "rtbMessage";
+            this.rtbMessage.ReadOnly = true;
+            this.rtbMessage.Size = new System.Drawing.Size(631, 214);
+            this.rtbMessage.TabIndex = 0;
+            this.rtbMessage.Text = "";
             // 
-            // rtbListParticipants
+            // btConnect
             // 
-            this.rtbListParticipants.Location = new System.Drawing.Point(572, 37);
-            this.rtbListParticipants.Name = "rtbListParticipants";
-            this.rtbListParticipants.Size = new System.Drawing.Size(192, 387);
-            this.rtbListParticipants.TabIndex = 1;
-            this.rtbListParticipants.Text = "";
+            this.btConnect.Location = new System.Drawing.Point(151, 251);
+            this.btConnect.Name = "btConnect";
+            this.btConnect.Size = new System.Drawing.Size(132, 31);
+            this.btConnect.TabIndex = 1;
+            this.btConnect.Text = "Connect";
+            this.btConnect.UseVisualStyleBackColor = true;
+            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
             // 
-            // tbName
+            // lvParticipants
             // 
-            this.tbName.Location = new System.Drawing.Point(21, 303);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(187, 22);
-            this.tbName.TabIndex = 2;
-            // 
-            // tbMess
-            // 
-            this.tbMess.Location = new System.Drawing.Point(22, 375);
-            this.tbMess.Multiline = true;
-            this.tbMess.Name = "tbMess";
-            this.tbMess.Size = new System.Drawing.Size(311, 38);
-            this.tbMess.TabIndex = 3;
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(12, 218);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(196, 35);
-            this.btnConnect.TabIndex = 4;
-            this.btnConnect.Text = "Connect to Server";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(352, 375);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(85, 38);
-            this.btnSend.TabIndex = 5;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            this.lvParticipants.HideSelection = false;
+            this.lvParticipants.Location = new System.Drawing.Point(653, 31);
+            this.lvParticipants.Name = "lvParticipants";
+            this.lvParticipants.Size = new System.Drawing.Size(142, 315);
+            this.lvParticipants.TabIndex = 2;
+            this.lvParticipants.UseCompatibleStateImageBehavior = false;
+            this.lvParticipants.View = System.Windows.Forms.View.List;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 273);
+            this.label1.Location = new System.Drawing.Point(650, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Your name";
+            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Participants";
+            // 
+            // tbYourName
+            // 
+            this.tbYourName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbYourName.Location = new System.Drawing.Point(13, 255);
+            this.tbYourName.Name = "tbYourName";
+            this.tbYourName.Size = new System.Drawing.Size(132, 22);
+            this.tbYourName.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 346);
+            this.label2.Location = new System.Drawing.Point(12, 236);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Message";
+            this.label2.Size = new System.Drawing.Size(72, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Your name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(570, 12);
+            this.label3.Location = new System.Drawing.Point(14, 305);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Participants";
+            this.label3.Text = "Message";
             // 
-            // cbListParticipants
+            // tbMessage
             // 
-            this.cbListParticipants.FormattingEnabled = true;
-            this.cbListParticipants.Location = new System.Drawing.Point(254, 303);
-            this.cbListParticipants.Name = "cbListParticipants";
-            this.cbListParticipants.Size = new System.Drawing.Size(121, 24);
-            this.cbListParticipants.TabIndex = 11;
+            this.tbMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMessage.Location = new System.Drawing.Point(15, 324);
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.Size = new System.Drawing.Size(490, 22);
+            this.tbMessage.TabIndex = 7;
+            // 
+            // btSend
+            // 
+            this.btSend.Location = new System.Drawing.Point(511, 319);
+            this.btSend.Name = "btSend";
+            this.btSend.Size = new System.Drawing.Size(132, 31);
+            this.btSend.TabIndex = 6;
+            this.btSend.Text = "Send";
+            this.btSend.UseVisualStyleBackColor = true;
+            this.btSend.Click += new System.EventHandler(this.btSend_Click);
+            // 
+            // btSendFile
+            // 
+            this.btSendFile.Location = new System.Drawing.Point(511, 282);
+            this.btSendFile.Name = "btSendFile";
+            this.btSendFile.Size = new System.Drawing.Size(132, 31);
+            this.btSendFile.TabIndex = 9;
+            this.btSendFile.Text = "Send File";
+            this.btSendFile.UseVisualStyleBackColor = true;
+            this.btSendFile.Click += new System.EventHandler(this.btSendFile_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(251, 273);
+            this.label4.Location = new System.Drawing.Point(372, 268);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 16);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Receiver";
+            this.label4.Size = new System.Drawing.Size(45, 16);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Friend";
             // 
-            // btnSendFile
+            // tbYourFriendName
             // 
-            this.btnSendFile.Location = new System.Drawing.Point(453, 375);
-            this.btnSendFile.Name = "btnSendFile";
-            this.btnSendFile.Size = new System.Drawing.Size(85, 38);
-            this.btnSendFile.TabIndex = 13;
-            this.btnSendFile.Text = "Send File";
-            this.btnSendFile.UseVisualStyleBackColor = true;
-            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
+            this.tbYourFriendName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbYourFriendName.Location = new System.Drawing.Point(373, 287);
+            this.tbYourFriendName.Name = "tbYourFriendName";
+            this.tbYourFriendName.Size = new System.Drawing.Size(132, 22);
+            this.tbYourFriendName.TabIndex = 10;
             // 
-            // Bai04_Client
+            // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 436);
-            this.Controls.Add(this.btnSendFile);
+            this.ClientSize = new System.Drawing.Size(806, 361);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbListParticipants);
+            this.Controls.Add(this.tbYourFriendName);
+            this.Controls.Add(this.btSendFile);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbMessage);
+            this.Controls.Add(this.btSend);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbYourName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.tbMess);
-            this.Controls.Add(this.tbName);
-            this.Controls.Add(this.rtbListParticipants);
-            this.Controls.Add(this.rtbChat);
-            this.Name = "Bai04_Client";
-            this.Text = "Bai04_Client";
+            this.Controls.Add(this.lvParticipants);
+            this.Controls.Add(this.btConnect);
+            this.Controls.Add(this.rtbMessage);
+            this.Name = "Client";
+            this.Text = "Client";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,17 +177,17 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox rtbChat;
-        private System.Windows.Forms.RichTextBox rtbListParticipants;
-        private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.TextBox tbMess;
-        private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.RichTextBox rtbMessage;
+        private System.Windows.Forms.Button btConnect;
+        private System.Windows.Forms.ListView lvParticipants;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbYourName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbListParticipants;
+        private System.Windows.Forms.TextBox tbMessage;
+        private System.Windows.Forms.Button btSend;
+        private System.Windows.Forms.Button btSendFile;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnSendFile;
+        private System.Windows.Forms.TextBox tbYourFriendName;
     }
 }

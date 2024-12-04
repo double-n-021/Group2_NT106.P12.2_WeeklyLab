@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,268 +18,248 @@ namespace Group2_Lab03
     public partial class Bai04_Server : Form
     {
         private TcpListener server;
-        private List<TcpClient> clients = new List<TcpClient>();
-        private Dictionary<TcpClient, string> userNames = new Dictionary<TcpClient, string>();
-        private Thread listenThread;
-        private const int PORT = 8080;
+        private List<User> userList = new List<User>();
 
         public Bai04_Server()
         {
             InitializeComponent();
         }
-
-        private void rbtManageMessage_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnListen_Click(object sender, EventArgs e)
+        private void btListen_Click(object sender, EventArgs e)
         {
             try
             {
-                // Khởi động server
-                server = new TcpListener(IPAddress.Any, PORT);
+                server = new TcpListener(IPAddress.Any, 8080);
                 server.Start();
-                listenThread = new Thread(AcceptClients);
-                listenThread.Start();
-
-                MessageBox.Show($"Server is listening on port {PORT}");
+                MessageBox.Show("Server is listening...");
+                btListen.Enabled = false;
+                Thread clientListener = new Thread(Listen);
+                clientListener.IsBackground = true;
+                clientListener.Start();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error starting server: {ex.Message}");
+                MessageBox.Show("Lỗi khi khởi động server: " + ex.Message);
             }
         }
 
-        private void AcceptClients()
+        private void Listen()
         {
             while (true)
             {
                 try
                 {
                     TcpClient client = server.AcceptTcpClient();
-                    lock (clients)
-                    {
-                        clients.Add(client);
-                    }
-
                     Thread clientThread = new Thread(HandleClient);
+                    clientThread.IsBackground = true;
                     clientThread.Start(client);
+                }
+                catch (SocketException ex)
+                {
+                    MessageBox.Show($"Lỗi socket: {ex.Message}");
+                    break;
+                }
+            }
+        }
+
+        void HandleClient(object obj)
+        {
+            TcpClient client = obj as TcpClient;
+            NetworkStream stream = client.GetStream();
+            BinaryReader reader = new BinaryReader(stream);
+            BinaryWriter writer = new BinaryWriter(stream);
+            {
+                User user = new User(client);
+                userList.Add(user);
+                try
+                {
+                    string requestInJson = string.Empty;
+                    while (true)
+                    {
+                        requestInJson = user.Reader.ReadString();
+
+                        Packet request = JsonConvert.DeserializeObject<Packet>(requestInJson);
+
+                        switch (request.code)
+                        {
+                            case 0:
+                                connecting_handler(user, request);
+                                break;
+                            case 1:
+                                send_message_handler(user, request);
+                                break;
+                            case 2:
+                                send_file_handler(user, request);
+                                break;
+                        }
+                    }
+                }
+                catch
+                {
+                    close_client(user);
+                }
+            }
+        }
+
+        private void connecting_handler(User user, Packet request)
+        {
+            IPEndPoint clientEndPoint = user.tcpClient.Client.RemoteEndPoint as IPEndPoint;
+            string clientIP = clientEndPoint.Address.ToString();
+            int clientPort = clientEndPoint.Port;
+            AppendTextSafe($"New client connected from {clientIP} at port {clientPort}");
+            user.Username = request.username;
+
+            // gửi danh sách user sau khi thêm user mới cho các user cũ trong phòng tương ứng
+            request.username = GetUsernameListInString();
+
+            foreach (User _user in userList)
+            {
+                sendSpecific(_user, request);
+            }
+        }
+
+        private string GetUsernameListInString()
+        {
+            List<string> usernames = new List<string>();
+            foreach (User user in userList)
+            {
+                usernames.Add(user.Username);
+            }
+            string[] s = usernames.ToArray();
+            string res = string.Join(",", s);
+            return res;
+        }
+
+
+        private void send_message_handler(User user, Packet request)
+        {
+            Packet messagePacket = new Packet
+            {
+                code = 1,
+                username = user.Username,
+                message = request.message
+            };
+
+            foreach (User Users in userList)
+            {
+                if (request.tofriend != "")
+                {
+                    if (Users.Username == request.tofriend)
+                    {
+                        sendSpecific(Users, messagePacket);
+                        return;
+                    }
+                }
+                else if (Users != user) // Bỏ qua người gửi
+                {
+                    sendSpecific(Users, messagePacket);
+                }
+            }
+
+            AppendTextSafe(user.Username + ": " + request.message);
+        }
+
+        private void send_file_handler(User user, Packet request)
+        {
+            Packet messagePacket = new Packet
+            {
+                code = 2,
+                username = user.Username,
+                data = request.data
+            };
+
+            foreach (User Users in userList)
+            {
+                if (request.tofriend != "")
+                {
+                    if (Users.Username == request.tofriend)
+                    {
+                        sendSpecific(Users, messagePacket);
+                        AppendTextSafe(user.Username + "sent a file");
+                        return;
+                    }
+                }
+                else if (Users != user) // Bỏ qua người gửi
+                {
+                    sendSpecific(Users, messagePacket);
+                }
+            }
+            AppendTextSafe(user.Username + "sent a file");
+        }
+
+        private void close_client(User user)
+        {
+            userList.Remove(user);
+            user.tcpClient.Close();
+
+            if (user.Username != string.Empty)
+            {
+                AppendTextSafe(user.Username + " left the group.");
+            }
+
+            //Gửi thông báo về client vừa ngắt kết nối đến client khác trong phòng
+            Packet message = new Packet()
+            {
+                code = 0,
+                username = "!" + user.Username,
+            };
+
+            foreach (User _user in userList)
+            {
+                sendSpecific(_user, message);
+            }
+        }
+
+        private void sendSpecific(User user, Object message)
+        {
+            if (user.tcpClient.Connected)
+            {
+                string messageInJson = JsonConvert.SerializeObject(message);
+                try
+                {
+                    user.Writer.Write(messageInJson);
+                    user.Writer.Flush();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error accepting client: {ex.Message}");
+                    rtbMessage.Text = rtbMessage.Text + $"Cannot send data to user: {user.Username}\nError: {ex.Message}";
                 }
             }
         }
-
-        private void HandleClient(object obj)
+        private void AppendTextSafe(string text)
         {
-            TcpClient client = (TcpClient)obj;
-            NetworkStream stream = client.GetStream();
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-
-            try
+            if (rtbMessage.InvokeRequired)
             {
-                // Nhận tên người dùng
-                bytesRead = stream.Read(buffer, 0, buffer.Length);
-                string userName = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
-
-                lock (userNames)
-                {
-                    userNames[client] = userName;
-                }
-
-                // Gửi danh sách người dùng hiện tại đến tất cả các client
-                BroadcastParticipants();
-
-                // Thông báo rằng người dùng đã tham gia
-                BroadcastMessage($"{userName} đã tham gia phòng chat.", client);
-                UpdateManageMessage($"{userName} đã tham gia phòng chat.");
-
-                while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    string message = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
-
-                    // Kiểm tra nếu đây là tin nhắn riêng
-                    if (message.StartsWith("PRIVATE:"))
-                    {
-                        string[] parts = message.Split(new[] { ':' }, 3);
-                        if (parts.Length == 3)
-                        {
-                            string recipient = parts[1];
-                            string privateMessage = parts[2];
-                            SendPrivateMessage(client, recipient, $"{userNames[client]} (private): {privateMessage}");
-                        }
-                    }
-                    else if (message.StartsWith("FILE:") || message.StartsWith("IMAGE:"))
-                    {
-                        string[] parts = message.Split(new[] { ':' }, 3);
-                        if (parts.Length == 3)
-                        {
-                            string recipient = parts[1];
-                            byte[] fileData = Convert.FromBase64String(parts[2]); // Dữ liệu file/ảnh được mã hóa base64 từ client
-
-                            if (recipient.Equals("All", StringComparison.OrdinalIgnoreCase))
-                            {
-                                BroadcastData(fileData, client);
-                            }
-                            else
-                            {
-                                BroadcastData(fileData, client, recipient);
-                            }
-                        }
-                    }
-
-                    else if (message.Equals("quit", StringComparison.OrdinalIgnoreCase))
-                    {
-                        BroadcastMessage($"{userName} đã rời phòng chat.", client);
-                        UpdateManageMessage($"{userName} đã rời phòng chat.");
-                        break;
-                    }
-                    else
-                    {
-                        BroadcastMessage($"{userName}: {message}", client);
-                        UpdateManageMessage($"{userName}: {message}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                UpdateManageMessage($"Lỗi xử lý client: {ex.Message}");
-            }
-            finally
-            {
-                lock (clients)
-                {
-                    clients.Remove(client);
-                }
-                lock (userNames)
-                {
-                    if (userNames.ContainsKey(client))
-                        userNames.Remove(client);
-                }
-                // Gửi lại danh sách người dùng sau khi có người rời
-                BroadcastParticipants();
-
-                client.Close();
-            }
-        }
-
-        private void SendPrivateMessage(TcpClient sender, string recipient, string message, bool isBinary = false)
-        {
-            lock (userNames)
-            {
-                foreach (var kvp in userNames)
-                {
-                    if (kvp.Value.Equals(recipient, StringComparison.OrdinalIgnoreCase))
-                    {
-                        try
-                        {
-                            NetworkStream stream = kvp.Key.GetStream();
-                            byte[] data = isBinary ? Encoding.UTF8.GetBytes(message) : Encoding.UTF8.GetBytes(message);
-                            stream.Write(data, 0, data.Length);
-                        }
-                        catch
-                        {
-                            kvp.Key.Close();
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-
-        private void UpdateManageMessage(string message)
-        {
-            if (rbtManageMessage.InvokeRequired)
-            {
-                rbtManageMessage.Invoke(new Action(() =>
-                {
-                    rbtManageMessage.AppendText($"{message}{Environment.NewLine}");
-                }));
+                rtbMessage.Invoke(new Action(() => rtbMessage.AppendText(text + Environment.NewLine)));
             }
             else
             {
-                rbtManageMessage.AppendText($"{message}{Environment.NewLine}");
+                rtbMessage.AppendText(text + Environment.NewLine);
             }
         }
 
-
-        private void BroadcastMessage(string message, TcpClient excludeClient)
+        class Packet
         {
-            byte[] data = Encoding.UTF8.GetBytes(message);
-
-            lock (clients)
-            {
-                foreach (var client in clients)
-                {
-                    if (client != excludeClient)
-                    {
-                        try
-                        {
-                            NetworkStream stream = client.GetStream();
-                            stream.Write(data, 0, data.Length);
-                        }
-                        catch
-                        {
-                            // Ngắt kết nối với client nếu không gửi được
-                            client.Close();
-                        }
-                    }
-                }
-            }
+            public string username { get; set; }
+            public string message { get; set; }
+            public byte[] data { get; set; }
+            public string tofriend { get; set; }
+            public int code { get; set; }
         }
 
-        private void BroadcastData(byte[] data, TcpClient excludeClient = null, string recipient = "All")
+        class User
         {
-            lock (clients)
+            public string Username { get; set; }
+            public TcpClient tcpClient { get; set; }
+            public BinaryReader Reader { get; set; }
+            public BinaryWriter Writer { get; set; }
+
+            public User(TcpClient client)
             {
-                foreach (var client in clients)
-                {
-                    if (excludeClient != null && client == excludeClient) continue;
-
-                    try
-                    {
-                        // Gửi dữ liệu cho tất cả hoặc người dùng cụ thể
-                        if (recipient.Equals("All", StringComparison.OrdinalIgnoreCase) ||
-                            (userNames.ContainsKey(client) && userNames[client].Equals(recipient, StringComparison.OrdinalIgnoreCase)))
-                        {
-                            NetworkStream stream = client.GetStream();
-                            stream.Write(data, 0, data.Length);
-                        }
-                    }
-                    catch
-                    {
-                        // Ngắt kết nối với client nếu không gửi được
-                        client.Close();
-                    }
-                }
-            }
-        }
-
-
-        // Gửi danh sách participant đến tất cả các client
-        private void BroadcastParticipants()
-        {
-            lock (userNames)
-            {
-                string participants = string.Join("\n", userNames.Values);
-                byte[] data = Encoding.UTF8.GetBytes($"PARTICIPANTS:{participants}");
-
-                foreach (var client in clients)
-                {
-                    try
-                    {
-                        NetworkStream stream = client.GetStream();
-                        stream.Write(data, 0, data.Length);
-                    }
-                    catch
-                    {
-                        client.Close();
-                    }
-                }
+                tcpClient = client;
+                Username = string.Empty;
+                NetworkStream stream = tcpClient.GetStream();
+                Reader = new BinaryReader(stream);
+                Writer = new BinaryWriter(stream);
             }
         }
     }

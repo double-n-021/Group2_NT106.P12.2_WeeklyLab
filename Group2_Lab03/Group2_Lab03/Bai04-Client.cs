@@ -3,204 +3,354 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Group2_Lab03
 {
     public partial class Bai04_Client : Form
     {
-        private TcpClient client;
-        private NetworkStream stream;
-        private Thread receiveThread;
+        Packet this_client_info;
+        Manager manager;
+        TcpClient tcpClient;
+        NetworkStream ns;
+        BinaryReader reader;
+        BinaryWriter writer;
+        Byte[] data = null;
 
         public Bai04_Client()
         {
             InitializeComponent();
+            manager = new Manager(lvParticipants);
+            this.FormClosing += Client_FormClosing;
+        }
+        private void Client_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tcpClient != null && tcpClient.Connected)
+            {
+                Packet disconnectPacket = new Packet
+                {
+                    code = 3,
+                    username = tbYourName.Text,
+                    message = "Disconnected"
+                };
+
+                sendToServer(disconnectPacket);
+                tcpClient.Close();
+            }
+        }
+        private void btConnect_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbYourName.Text))
+            {
+                MessageBox.Show("Please enter your name before connecting to server!");
+            }
+            else
+            {
+                this_client_info = new Packet()
+                {
+                    username = tbYourName.Text,
+                    code = 0,
+                    message = "",
+                    data = null,
+                    tofriend = tbYourFriendName.Text,
+                };
+
+                try
+                {
+                    tcpClient = new TcpClient("127.0.0.1", 8080);
+                    NetworkStream stream = tcpClient.GetStream();
+                    writer = new BinaryWriter(stream);
+                    reader = new BinaryReader(stream); // Reader để đọc phản hồi
+                    {
+                        sendToServer(this_client_info);
+                        manager.AddToUserListView(tbYourName.Text);
+                        Thread listen = new Thread(Receive);
+                        listen.IsBackground = true;
+                        listen.Start();
+                    }
+                    btConnect.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Da dong ket noi: " + ex.Message);
+                }
+            }
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void btSend_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbName.Text))
+            string yourfriendname = string.IsNullOrEmpty(tbYourFriendName.Text) ? "" : tbYourFriendName.Text;
+            if (!string.IsNullOrEmpty(tbMessage.Text))
             {
-                MessageBox.Show("Please enter your username.");
+                rtbMessage.Text = rtbMessage.Text + "Me: " + tbMessage.Text + "\n";
+                // Tạo gói tin nhắn Packet để gửi tới server
+                Packet chatPacket = new Packet
+                {
+                    username = tbYourName.Text,
+                    code = 1,
+                    message = tbMessage.Text,
+                    tofriend = yourfriendname,
+                };
+
+                // Gửi tin nhắn đến server
+                sendToServer(chatPacket);
+                tbMessage.Clear();
+            }
+            else
+                MessageBox.Show("Please enter your message");
+        }
+
+        private void btSendFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Text Files (*.txt)|*.txt|Image Files (*.jpg;*.png)|*.jpg;*.png",
+                Title = "Select a File"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                byte[] fileData = File.ReadAllBytes(filePath);
+                string fileName = Path.GetFileName(filePath);
+
+                string yourfriendname = string.IsNullOrEmpty(tbYourFriendName.Text) ? "" : tbYourFriendName.Text;
+
+                Packet filePacket = new Packet
+                {
+                    username = tbYourName.Text,
+                    code = 2,
+                    data = fileData,
+                    message = fileName,
+                    tofriend = yourfriendname
+                };
+
+                rtbMessage.AppendText($"You sent a file: {fileName}\n");
+
+                // Send the packet to the server
+                sendToServer(filePacket);
+            }
+        }
+
+        private void sendToServer(Packet message)
+        {
+            string messageInJson = JsonConvert.SerializeObject(message);
+            try
+            {
+                writer.Write(messageInJson);
+                writer.Flush();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Receive()
+        {
+            try
+            {
+                string responseInJson = string.Empty;
+                while (true)
+                {
+                    responseInJson = reader.ReadString();
+
+                    Packet response = JsonConvert.DeserializeObject<Packet>(responseInJson);
+
+                    switch (response.code)
+                    {
+                        case 0:
+                            connecting_status(response);
+                            break;
+                        case 1:
+                            displayChatMessage(response.username, response.message);
+                            break;
+                        case 2:
+                            displayFileMessage(response);
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                tcpClient.Close();
+            }
+        }
+
+        void connecting_status(Packet response)
+        {
+            if (response.username.Contains('!'))
+            {
+                manager.RemoveFromUserListView(response.username.Substring(1));
+            }
+            else
+            {
+                List<string> listusername = response.username.Split(',').ToList();
+                foreach (string username in listusername)
+                {
+                    if (username == tbYourName.Text)
+                    {
+                        listusername.Remove(username);
+                        break;
+                    }
+                }
+                manager.ClearUserListView();
+                foreach (string username in listusername)
+                {
+                    manager.AddToUserListView(username);
+                }
+            }
+            response.code = 3;
+            sendToServer(response);
+        }
+
+        void displayChatMessage(string Fusername, string Message)
+        {
+            AppendTextSafe(Fusername + ": " + Message);
+
+        }
+
+        void displayFileMessage(Packet response)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => displayFileMessage(response)));
                 return;
             }
 
-            try
+            DialogResult result = MessageBox.Show($"{response.username} has sent you a file: {response.message}. Do you want to save it?",
+                                                  "File Received",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
-                client = new TcpClient("127.0.0.1", 8080);
-                stream = client.GetStream();
-
-                // Gửi tên người dùng đến server
-                string userName = tbName.Text.Trim();
-                byte[] data = Encoding.UTF8.GetBytes(userName);
-                stream.Write(data, 0, data.Length);
-
-                // Bắt đầu nhận tin nhắn
-                receiveThread = new Thread(ReceiveMessages);
-                receiveThread.Start();
-
-                MessageBox.Show("Connected to server!");
-                btnSend.Enabled = true;
-                tbMess.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error connecting to server: {ex.Message}");
-            }
-        }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tbMess.Text)) return;
-
-            try
-            {
-                string recipient = cbListParticipants.SelectedItem?.ToString() ?? "All";
-                string message = tbMess.Text.Trim();
-
-                if (recipient.Equals("All", StringComparison.OrdinalIgnoreCase))
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    byte[] data = Encoding.UTF8.GetBytes(message);
-                    stream.Write(data, 0, data.Length);
-                }
-                else
-                {
-                    string privateMessage = $"PRIVATE:{recipient}:{message}";
-                    byte[] data = Encoding.UTF8.GetBytes(privateMessage);
-                    stream.Write(data, 0, data.Length);
-                }
+                    saveFileDialog.FileName = response.message;
+                    saveFileDialog.Filter = "Text Files (*.txt)|*.txt|Image Files (*.jpg;*.png)|*.jpg;*.png";
 
-                tbMess.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error sending message: {ex.Message}");
-            }
-        }
-        private void ReceiveMessages()
-        {
-            byte[] buffer = new byte[1024];
-
-            try
-            {
-                while (true)
-                {
-                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
-                    if (bytesRead == 0) break;
-
-                    string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-
-                    if (message.StartsWith("PARTICIPANTS:"))
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        string participants = message.Replace("PARTICIPANTS:", "").Trim();
-                        Invoke(new Action(() =>
+                        try
                         {
-                            rtbListParticipants.Clear();
-                            rtbListParticipants.AppendText(participants);
-
-                            // Cập nhật comboBox danh sách người dùng
-                            cbListParticipants.Items.Clear();
-                            cbListParticipants.Items.Add("All");
-                            foreach (var participant in participants.Split('\n'))
-                            {
-                                if (!string.IsNullOrWhiteSpace(participant))
-                                    cbListParticipants.Items.Add(participant.Trim());
-                            }
-                        }));
-                    }
-                    else
-                    {
-                        Invoke(new Action(() =>
-                        {
-                            rtbChat.AppendText(message + Environment.NewLine);
-                        }));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Disconnected: {ex.Message}");
-            }
-            finally
-            {
-                Disconnect();
-            }
-        }
-        private void Disconnect()
-        {
-            stream?.Close();
-            client?.Close();
-            if (receiveThread != null && receiveThread.IsAlive)
-                receiveThread.Abort();
-
-            Invoke(new Action(() =>
-            {
-                btnSend.Enabled = false;
-                tbMess.Enabled = false;
-            }));
-        }
-
-        private void btnSendFile_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Supported Files|*.jpg;*.png;*.txt|All Files|*.*";
-                openFileDialog.Title = "Select a File or Image";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    string fileName = System.IO.Path.GetFileName(filePath);
-                    string recipient = cbListParticipants.SelectedItem?.ToString() ?? "All";
-
-                    try
-                    {
-                        // Đọc dữ liệu file
-                        byte[] fileData = System.IO.File.ReadAllBytes(filePath);
-
-                        // Kiểm tra loại file
-                        string messageType;
-                        if (filePath.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
-                            filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
-                        {
-                            messageType = "IMAGE";
+                            File.WriteAllBytes(saveFileDialog.FileName, response.data);
+                            MessageBox.Show($"File saved successfully at: {saveFileDialog.FileName}",
+                                            "File Saved",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
                         }
-                        else if (filePath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                        catch (Exception ex)
                         {
-                            messageType = "FILE";
+                            MessageBox.Show($"Error saving file: {ex.Message}",
+                                            "Error",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Error);
                         }
-                        else
-                        {
-                            MessageBox.Show("Unsupported file type. Only .jpg, .png, and .txt are allowed.");
-                            return;
-                        }
-
-                        // Đóng gói tin nhắn với tiêu đề và dữ liệu file
-                        string header = $"{messageType}:{recipient}:{fileName}:{fileData.Length}";
-                        byte[] headerData = Encoding.UTF8.GetBytes(header);
-                        stream.Write(headerData, 0, headerData.Length); // Gửi tiêu đề
-
-                        // Gửi dữ liệu file
-                        stream.Write(fileData, 0, fileData.Length); // Gửi nội dung file
-
-                        MessageBox.Show($"{fileName} sent successfully!");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error sending file: {ex.Message}");
                     }
                 }
             }
+            else
+            {
+                rtbMessage.AppendText($"{response.username} sent a file, but you chose not to save it.\n");
+            }
         }
 
+        private void AppendTextSafe(string text)
+        {
+            if (rtbMessage.InvokeRequired)
+            {
+                rtbMessage.Invoke(new Action(() => rtbMessage.AppendText(text + Environment.NewLine)));
+            }
+            else
+            {
+                rtbMessage.AppendText(text + Environment.NewLine);
+            }
+        }
+
+    }
+
+    class Packet
+    {
+        public string username { get; set; }
+        public string message { get; set; }
+        public byte[] data { get; set; }
+        public string tofriend { get; set; }
+        public int code { get; set; }
+    }
+
+    class Manager
+    {
+        ListView List;
+
+        public Manager(ListView list)
+        {
+            List = list;
+        }
+
+        public void AddToUserListView(string line)
+        {
+            if (List.InvokeRequired)
+            {
+                List.Invoke(new Action(() =>
+                {
+                    List.Items.Add(line);
+                }));
+            }
+            else
+            {
+                List.Items.Add(line);
+            }
+        }
+
+        public void RemoveFromUserListView(string line)
+        {
+            Action action = () =>
+            {
+                foreach (ListViewItem item in List.Items)
+                {
+                    if (item.Text == line)
+                    {
+                        List.Items.Remove(item);
+                        break;
+                    }
+                }
+            };
+            if (List.InvokeRequired)
+            {
+                List.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
+        }
+
+        public void ClearUserListView()
+        {
+            Action action = () =>
+            {
+                ListViewItem firstLine = List.Items[0];
+                List.Clear();
+                List.Items.Add(firstLine);
+            };
+            if (List.InvokeRequired)
+            {
+                List.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
+        }
     }
 }

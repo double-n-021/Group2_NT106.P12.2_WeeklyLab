@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,18 @@
     <Compile Include="Bai01-Client.Designer.cs">
       <DependentUpon>Bai01-Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bai03-Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai03-Client.Designer.cs">
+      <DependentUpon>Bai03-Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bai03-Server.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai03-Server.Designer.cs">
+      <DependentUpon>Bai03-Server.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bai04-Client.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +84,18 @@
     </Compile>
     <Compile Include="Lab03-Bai01.Designer.cs">
       <DependentUpon>Lab03-Bai01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab03-Bai02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab03-Bai02.Designer.cs">
+      <DependentUpon>Lab03-Bai02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab03-Bai03.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab03-Bai03.Designer.cs">
+      <DependentUpon>Lab03-Bai03.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab03-Bai04.cs">
       <SubType>Form</SubType>
@@ -96,6 +123,12 @@
     <EmbeddedResource Include="Bai01-Server.resx">
       <DependentUpon>Bai01-Server.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bai03-Client.resx">
+      <DependentUpon>Bai03-Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bai03-Server.resx">
+      <DependentUpon>Bai03-Server.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bai04-Client.resx">
       <DependentUpon>Bai04-Client.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +137,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab03-Bai01.resx">
       <DependentUpon>Lab03-Bai01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab03-Bai02.resx">
+      <DependentUpon>Lab03-Bai02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab03-Bai03.resx">
+      <DependentUpon>Lab03-Bai03.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab03-Bai04.resx">
       <DependentUpon>Lab03-Bai04.cs</DependentUpon>
@@ -120,6 +159,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
