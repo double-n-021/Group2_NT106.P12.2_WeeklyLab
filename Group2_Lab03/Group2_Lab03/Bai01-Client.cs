@@ -28,6 +28,8 @@ namespace Group2_Lab03
             string message = rtbMessage.Text;
 
             SendUDPMessage(remoteHost, port, message);
+            // Xóa nội dung trong khung nhập tin nhắn sau khi gửi
+            rtbMessage.Clear();
         }
 
         private void SendUDPMessage(string remoteHost, int port, string message)
