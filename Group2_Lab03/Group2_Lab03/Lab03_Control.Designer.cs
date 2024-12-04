@@ -42,7 +42,7 @@
             // 
             this.btnBai01.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBai01.Location = new System.Drawing.Point(112, 364);
-            this.btnBai01.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnBai01.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai01.Name = "btnBai01";
             this.btnBai01.Size = new System.Drawing.Size(234, 265);
             this.btnBai01.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             this.btnBai03.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBai03.Location = new System.Drawing.Point(656, 364);
-            this.btnBai03.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnBai03.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai03.Name = "btnBai03";
             this.btnBai03.Size = new System.Drawing.Size(228, 265);
             this.btnBai03.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             this.btnBai02.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBai02.Location = new System.Drawing.Point(387, 364);
-            this.btnBai02.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnBai02.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai02.Name = "btnBai02";
             this.btnBai02.Size = new System.Drawing.Size(226, 265);
             this.btnBai02.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             this.btnBai04.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBai04.Location = new System.Drawing.Point(925, 364);
-            this.btnBai04.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnBai04.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai04.Name = "btnBai04";
             this.btnBai04.Size = new System.Drawing.Size(222, 265);
             this.btnBai04.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             this.btnBai05.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBai05.Location = new System.Drawing.Point(1190, 364);
-            this.btnBai05.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnBai05.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai05.Name = "btnBai05";
             this.btnBai05.Size = new System.Drawing.Size(235, 265);
             this.btnBai05.TabIndex = 4;
@@ -120,7 +120,8 @@
             this.Controls.Add(this.btnBai02);
             this.Controls.Add(this.btnBai01);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Lab03_Control";
             this.Text = "Lab03";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
