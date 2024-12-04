@@ -100,17 +100,47 @@ namespace Group2_Lab03
                 {
                     string message = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
 
-                    // Nếu client gửi "quit", ngắt kết nối
-                    if (message.Equals("quit", StringComparison.OrdinalIgnoreCase))
+                    // Kiểm tra nếu đây là tin nhắn riêng
+                    if (message.StartsWith("PRIVATE:"))
+                    {
+                        string[] parts = message.Split(new[] { ':' }, 3);
+                        if (parts.Length == 3)
+                        {
+                            string recipient = parts[1];
+                            string privateMessage = parts[2];
+                            SendPrivateMessage(client, recipient, $"{userNames[client]} (private): {privateMessage}");
+                        }
+                    }
+                    else if (message.StartsWith("FILE:") || message.StartsWith("IMAGE:"))
+                    {
+                        string[] parts = message.Split(new[] { ':' }, 3);
+                        if (parts.Length == 3)
+                        {
+                            string recipient = parts[1];
+                            byte[] fileData = Convert.FromBase64String(parts[2]); // Dữ liệu file/ảnh được mã hóa base64 từ client
+
+                            if (recipient.Equals("All", StringComparison.OrdinalIgnoreCase))
+                            {
+                                BroadcastData(fileData, client);
+                            }
+                            else
+                            {
+                                BroadcastData(fileData, client, recipient);
+                            }
+                        }
+                    }
+
+                    else if (message.Equals("quit", StringComparison.OrdinalIgnoreCase))
                     {
                         BroadcastMessage($"{userName} đã rời phòng chat.", client);
                         UpdateManageMessage($"{userName} đã rời phòng chat.");
                         break;
                     }
-
-                    // Gửi tin nhắn từ người dùng đến tất cả client khác
-                    BroadcastMessage($"{userName}: {message}", client);
-                    UpdateManageMessage($"{userName}: {message}");
+                    else
+                    {
+                        BroadcastMessage($"{userName}: {message}", client);
+                        UpdateManageMessage($"{userName}: {message}");
+                    }
                 }
             }
             catch (Exception ex)
@@ -132,6 +162,30 @@ namespace Group2_Lab03
                 BroadcastParticipants();
 
                 client.Close();
+            }
+        }
+
+        private void SendPrivateMessage(TcpClient sender, string recipient, string message, bool isBinary = false)
+        {
+            lock (userNames)
+            {
+                foreach (var kvp in userNames)
+                {
+                    if (kvp.Value.Equals(recipient, StringComparison.OrdinalIgnoreCase))
+                    {
+                        try
+                        {
+                            NetworkStream stream = kvp.Key.GetStream();
+                            byte[] data = isBinary ? Encoding.UTF8.GetBytes(message) : Encoding.UTF8.GetBytes(message);
+                            stream.Write(data, 0, data.Length);
+                        }
+                        catch
+                        {
+                            kvp.Key.Close();
+                        }
+                        break;
+                    }
+                }
             }
         }
 
@@ -175,6 +229,34 @@ namespace Group2_Lab03
                 }
             }
         }
+
+        private void BroadcastData(byte[] data, TcpClient excludeClient = null, string recipient = "All")
+        {
+            lock (clients)
+            {
+                foreach (var client in clients)
+                {
+                    if (excludeClient != null && client == excludeClient) continue;
+
+                    try
+                    {
+                        // Gửi dữ liệu cho tất cả hoặc người dùng cụ thể
+                        if (recipient.Equals("All", StringComparison.OrdinalIgnoreCase) ||
+                            (userNames.ContainsKey(client) && userNames[client].Equals(recipient, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            NetworkStream stream = client.GetStream();
+                            stream.Write(data, 0, data.Length);
+                        }
+                    }
+                    catch
+                    {
+                        // Ngắt kết nối với client nếu không gửi được
+                        client.Close();
+                    }
+                }
+            }
+        }
+
 
         // Gửi danh sách participant đến tất cả các client
         private void BroadcastParticipants()

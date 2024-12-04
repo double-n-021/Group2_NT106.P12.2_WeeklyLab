@@ -41,7 +41,7 @@ namespace Group2_Lab03
 
                 // Gửi tên người dùng đến server
                 string userName = tbName.Text.Trim();
-                byte[] data = Encoding.ASCII.GetBytes(userName);
+                byte[] data = Encoding.UTF8.GetBytes(userName);
                 stream.Write(data, 0, data.Length);
 
                 // Bắt đầu nhận tin nhắn
@@ -64,17 +64,22 @@ namespace Group2_Lab03
 
             try
             {
+                string recipient = cbListParticipants.SelectedItem?.ToString() ?? "All";
                 string message = tbMess.Text.Trim();
-                byte[] data = Encoding.ASCII.GetBytes(message);
-                stream.Write(data, 0, data.Length);
+
+                if (recipient.Equals("All", StringComparison.OrdinalIgnoreCase))
+                {
+                    byte[] data = Encoding.UTF8.GetBytes(message);
+                    stream.Write(data, 0, data.Length);
+                }
+                else
+                {
+                    string privateMessage = $"PRIVATE:{recipient}:{message}";
+                    byte[] data = Encoding.UTF8.GetBytes(privateMessage);
+                    stream.Write(data, 0, data.Length);
+                }
 
                 tbMess.Clear();
-
-                // Nếu gửi "quit", ngắt kết nối
-                if (message.Equals("quit", StringComparison.OrdinalIgnoreCase))
-                {
-                    Disconnect();
-                }
             }
             catch (Exception ex)
             {
@@ -92,9 +97,8 @@ namespace Group2_Lab03
                     int bytesRead = stream.Read(buffer, 0, buffer.Length);
                     if (bytesRead == 0) break;
 
-                    string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+                    string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
-                    // Kiểm tra nếu server gửi danh sách participant
                     if (message.StartsWith("PARTICIPANTS:"))
                     {
                         string participants = message.Replace("PARTICIPANTS:", "").Trim();
@@ -102,11 +106,19 @@ namespace Group2_Lab03
                         {
                             rtbListParticipants.Clear();
                             rtbListParticipants.AppendText(participants);
+
+                            // Cập nhật comboBox danh sách người dùng
+                            cbListParticipants.Items.Clear();
+                            cbListParticipants.Items.Add("All");
+                            foreach (var participant in participants.Split('\n'))
+                            {
+                                if (!string.IsNullOrWhiteSpace(participant))
+                                    cbListParticipants.Items.Add(participant.Trim());
+                            }
                         }));
                     }
                     else
                     {
-                        // Hiển thị tin nhắn bình thường
                         Invoke(new Action(() =>
                         {
                             rtbChat.AppendText(message + Environment.NewLine);
@@ -135,6 +147,59 @@ namespace Group2_Lab03
                 btnSend.Enabled = false;
                 tbMess.Enabled = false;
             }));
+        }
+
+        private void btnSendFile_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Supported Files|*.jpg;*.png;*.txt|All Files|*.*";
+                openFileDialog.Title = "Select a File or Image";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    string fileName = System.IO.Path.GetFileName(filePath);
+                    string recipient = cbListParticipants.SelectedItem?.ToString() ?? "All";
+
+                    try
+                    {
+                        // Đọc dữ liệu file
+                        byte[] fileData = System.IO.File.ReadAllBytes(filePath);
+
+                        // Kiểm tra loại file
+                        string messageType;
+                        if (filePath.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                            filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                        {
+                            messageType = "IMAGE";
+                        }
+                        else if (filePath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                        {
+                            messageType = "FILE";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unsupported file type. Only .jpg, .png, and .txt are allowed.");
+                            return;
+                        }
+
+                        // Đóng gói tin nhắn với tiêu đề và dữ liệu file
+                        string header = $"{messageType}:{recipient}:{fileName}:{fileData.Length}";
+                        byte[] headerData = Encoding.UTF8.GetBytes(header);
+                        stream.Write(headerData, 0, headerData.Length); // Gửi tiêu đề
+
+                        // Gửi dữ liệu file
+                        stream.Write(fileData, 0, fileData.Length); // Gửi nội dung file
+
+                        MessageBox.Show($"{fileName} sent successfully!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error sending file: {ex.Message}");
+                    }
+                }
+            }
         }
 
     }

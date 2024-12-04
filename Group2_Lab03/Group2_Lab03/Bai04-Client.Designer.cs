@@ -37,8 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbListParticipants = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnSendFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rtbChat
@@ -66,10 +67,10 @@
             // 
             // tbMess
             // 
-            this.tbMess.Location = new System.Drawing.Point(21, 375);
+            this.tbMess.Location = new System.Drawing.Point(22, 375);
             this.tbMess.Multiline = true;
             this.tbMess.Name = "tbMess";
-            this.tbMess.Size = new System.Drawing.Size(426, 38);
+            this.tbMess.Size = new System.Drawing.Size(311, 38);
             this.tbMess.TabIndex = 3;
             // 
             // btnConnect
@@ -84,7 +85,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(453, 375);
+            this.btnSend.Location = new System.Drawing.Point(352, 375);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(85, 38);
             this.btnSend.TabIndex = 5;
@@ -119,13 +120,13 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Participants";
             // 
-            // comboBox1
+            // cbListParticipants
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(254, 303);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 11;
+            this.cbListParticipants.FormattingEnabled = true;
+            this.cbListParticipants.Location = new System.Drawing.Point(254, 303);
+            this.cbListParticipants.Name = "cbListParticipants";
+            this.cbListParticipants.Size = new System.Drawing.Size(121, 24);
+            this.cbListParticipants.TabIndex = 11;
             // 
             // label4
             // 
@@ -136,13 +137,24 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Receiver";
             // 
+            // btnSendFile
+            // 
+            this.btnSendFile.Location = new System.Drawing.Point(453, 375);
+            this.btnSendFile.Name = "btnSendFile";
+            this.btnSendFile.Size = new System.Drawing.Size(85, 38);
+            this.btnSendFile.TabIndex = 13;
+            this.btnSendFile.Text = "Send File";
+            this.btnSendFile.UseVisualStyleBackColor = true;
+            this.btnSendFile.Click += new System.EventHandler(this.btnSendFile_Click);
+            // 
             // Bai04_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 436);
+            this.Controls.Add(this.btnSendFile);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbListParticipants);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -170,7 +182,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbListParticipants;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSendFile;
     }
 }
