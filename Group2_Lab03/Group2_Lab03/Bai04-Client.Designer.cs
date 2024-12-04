@@ -151,7 +151,7 @@
             this.tbYourFriendName.Size = new System.Drawing.Size(132, 22);
             this.tbYourFriendName.TabIndex = 10;
             // 
-            // Client
+            // Bai04_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,7 +168,7 @@
             this.Controls.Add(this.lvParticipants);
             this.Controls.Add(this.btConnect);
             this.Controls.Add(this.rtbMessage);
-            this.Name = "Client";
+            this.Name = "Bai04_Client";
             this.Text = "Client";
             this.ResumeLayout(false);
             this.PerformLayout();
