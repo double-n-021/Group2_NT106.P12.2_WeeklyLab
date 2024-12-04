@@ -43,7 +43,8 @@ namespace Group2_Lab03
 
         private void btnBai05_Click(object sender, EventArgs e)
         {
-
+            Lab03_Bai05 bai05 = new Lab03_Bai05();
+            bai05.Show();
         }
     }
 }

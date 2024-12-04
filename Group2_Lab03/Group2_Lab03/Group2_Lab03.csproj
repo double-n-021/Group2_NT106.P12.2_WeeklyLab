@@ -79,6 +79,18 @@
     <Compile Include="Bai04-Server.Designer.cs">
       <DependentUpon>Bai04-Server.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bai05-Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai05-Client.Designer.cs">
+      <DependentUpon>Bai05-Client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bai05-Server.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bai05-Server.Designer.cs">
+      <DependentUpon>Bai05-Server.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab03-Bai01.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,12 +115,19 @@
     <Compile Include="Lab03-Bai04.Designer.cs">
       <DependentUpon>Lab03-Bai04.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab03-Bai05.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab03-Bai05.Designer.cs">
+      <DependentUpon>Lab03-Bai05.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab03_Control.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab03_Control.Designer.cs">
       <DependentUpon>Lab03_Control.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bai01-Server.cs">
@@ -117,6 +136,7 @@
     <Compile Include="Bai01-Server.Designer.cs">
       <DependentUpon>Bai01-Server.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seat.cs" />
     <EmbeddedResource Include="Bai01-Client.resx">
       <DependentUpon>Bai01-Client.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +155,12 @@
     <EmbeddedResource Include="Bai04-Server.resx">
       <DependentUpon>Bai04-Server.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bai05-Client.resx">
+      <DependentUpon>Bai05-Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bai05-Server.resx">
+      <DependentUpon>Bai05-Server.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab03-Bai01.resx">
       <DependentUpon>Lab03-Bai01.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab03-Bai04.resx">
       <DependentUpon>Lab03-Bai04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab03-Bai05.resx">
+      <DependentUpon>Lab03-Bai05.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab03_Control.resx">
       <DependentUpon>Lab03_Control.cs</DependentUpon>
