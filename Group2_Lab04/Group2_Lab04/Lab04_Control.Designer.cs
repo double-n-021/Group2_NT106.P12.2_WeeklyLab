@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab04_Control));
-            this.btnBai05 = new System.Windows.Forms.Button();
             this.btnBai04 = new System.Windows.Forms.Button();
             this.btnBai03 = new System.Windows.Forms.Button();
             this.btnBai02 = new System.Windows.Forms.Button();
@@ -38,31 +37,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnBai05
-            // 
-            this.btnBai05.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnBai05.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBai05.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBai05.Location = new System.Drawing.Point(837, 510);
-            this.btnBai05.Margin = new System.Windows.Forms.Padding(6);
-            this.btnBai05.Name = "btnBai05";
-            this.btnBai05.Size = new System.Drawing.Size(247, 253);
-            this.btnBai05.TabIndex = 10;
-            this.btnBai05.Text = "Bài 05";
-            this.btnBai05.UseVisualStyleBackColor = false;
-            this.btnBai05.Click += new System.EventHandler(this.btnBai05_Click);
-            // 
             // btnBai04
             // 
             this.btnBai04.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnBai04.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBai04.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBai04.Location = new System.Drawing.Point(409, 510);
+            this.btnBai04.Location = new System.Drawing.Point(224, 510);
             this.btnBai04.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai04.Name = "btnBai04";
-            this.btnBai04.Size = new System.Drawing.Size(247, 253);
+            this.btnBai04.Size = new System.Drawing.Size(1043, 253);
             this.btnBai04.TabIndex = 9;
-            this.btnBai04.Text = "Bài 04";
+            this.btnBai04.Text = "Bài 04 + 05";
             this.btnBai04.UseVisualStyleBackColor = false;
             this.btnBai04.Click += new System.EventHandler(this.btnBai04_Click);
             // 
@@ -88,7 +73,7 @@
             this.btnBai02.Location = new System.Drawing.Point(630, 233);
             this.btnBai02.Margin = new System.Windows.Forms.Padding(6);
             this.btnBai02.Name = "btnBai02";
-            this.btnBai02.Size = new System.Drawing.Size(247, 239);
+            this.btnBai02.Size = new System.Drawing.Size(247, 253);
             this.btnBai02.TabIndex = 8;
             this.btnBai02.Text = "Bài 02";
             this.btnBai02.UseVisualStyleBackColor = false;
@@ -124,7 +109,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1506, 787);
-            this.Controls.Add(this.btnBai05);
             this.Controls.Add(this.btnBai04);
             this.Controls.Add(this.btnBai03);
             this.Controls.Add(this.btnBai02);
@@ -139,8 +123,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBai05;
         private System.Windows.Forms.Button btnBai04;
         private System.Windows.Forms.Button btnBai03;
         private System.Windows.Forms.Button btnBai02;
