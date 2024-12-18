@@ -19,12 +19,13 @@ namespace Group2_Lab04
 
         private void btnBai01_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnBai02_Click(object sender, EventArgs e)
         {
-
+            Lab04_Bai02 formBai02 = new Lab04_Bai02();
+            formBai02.Show();
         }
 
         private void btnBai03_Click(object sender, EventArgs e)
@@ -34,7 +35,9 @@ namespace Group2_Lab04
 
         private void btnBai04_Click(object sender, EventArgs e)
         {
-
+            Lab04_Bai04 formBai04 = new Lab04_Bai04();
+            formBai04.Show();
+            
         }
 
         private void btnBai05_Click(object sender, EventArgs e)
