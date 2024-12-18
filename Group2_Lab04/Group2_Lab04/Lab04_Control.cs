@@ -44,7 +44,8 @@ namespace Group2_Lab04
 
         private void btnBai05_Click(object sender, EventArgs e)
         {
-
+            Lab04_Bai05 formBai05 = new Lab04_Bai05();
+            formBai05.Show();
         }
     }
 }
