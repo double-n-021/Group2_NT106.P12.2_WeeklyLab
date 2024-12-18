@@ -25,7 +25,7 @@ namespace Group2_Lab04
 
         private void InitializeWebView()
         {
-             wvShow.EnsureCoreWebView2Async();
+           wvShow.EnsureCoreWebView2Async();
         }
 
         string sURL = "";
