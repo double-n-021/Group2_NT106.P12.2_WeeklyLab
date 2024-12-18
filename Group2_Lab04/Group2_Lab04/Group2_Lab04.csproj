@@ -87,6 +87,12 @@
     <Compile Include="Lab04-Bai04.Designer.cs">
       <DependentUpon>Lab04-Bai04.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab04-Bai05.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab04-Bai05.Designer.cs">
+      <DependentUpon>Lab04-Bai05.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab04_Control.cs">
       <SubType>Form</SubType>
     </Compile>
