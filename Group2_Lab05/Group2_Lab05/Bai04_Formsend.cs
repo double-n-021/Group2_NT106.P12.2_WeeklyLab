@@ -16,5 +16,7 @@ namespace Group2_Lab05
         {
             InitializeComponent();
         }
+
+     
     }
 }
