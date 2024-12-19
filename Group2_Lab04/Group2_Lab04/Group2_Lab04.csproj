@@ -110,8 +110,17 @@
     <EmbeddedResource Include="Lab04-Bai01.resx">
       <DependentUpon>Lab04-Bai01.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab04-Bai02.resx">
+      <DependentUpon>Lab04-Bai02.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab04-Bai03.resx">
       <DependentUpon>Lab04-Bai03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab04-Bai04.resx">
+      <DependentUpon>Lab04-Bai04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab04-Bai05.resx">
+      <DependentUpon>Lab04-Bai05.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab04_Control.resx">
       <DependentUpon>Lab04_Control.cs</DependentUpon>

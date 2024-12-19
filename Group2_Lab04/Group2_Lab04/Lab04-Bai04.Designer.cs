@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab04_Bai04));
             this.tbLink = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
@@ -40,33 +41,37 @@
             // 
             // tbLink
             // 
-            this.tbLink.Location = new System.Drawing.Point(96, 12);
+            this.tbLink.Location = new System.Drawing.Point(192, 23);
+            this.tbLink.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbLink.Multiline = true;
             this.tbLink.Name = "tbLink";
-            this.tbLink.Size = new System.Drawing.Size(498, 26);
+            this.tbLink.Size = new System.Drawing.Size(992, 47);
             this.tbLink.TabIndex = 0;
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(96, 54);
+            this.tbUsername.Location = new System.Drawing.Point(192, 105);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbUsername.Multiline = true;
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(315, 26);
+            this.tbUsername.Size = new System.Drawing.Size(626, 47);
             this.tbUsername.TabIndex = 1;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(96, 98);
+            this.tbPassword.Location = new System.Drawing.Point(192, 190);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbPassword.Multiline = true;
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(315, 26);
+            this.tbPassword.Size = new System.Drawing.Size(626, 47);
             this.tbPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(436, 54);
+            this.btnLogin.Location = new System.Drawing.Point(872, 105);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(158, 67);
+            this.btnLogin.Size = new System.Drawing.Size(316, 130);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -75,43 +80,51 @@
             // LbURL
             // 
             this.LbURL.AutoSize = true;
-            this.LbURL.Location = new System.Drawing.Point(12, 22);
+            this.LbURL.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LbURL.Location = new System.Drawing.Point(24, 43);
+            this.LbURL.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LbURL.Name = "LbURL";
-            this.LbURL.Size = new System.Drawing.Size(34, 16);
+            this.LbURL.Size = new System.Drawing.Size(70, 32);
             this.LbURL.TabIndex = 4;
             this.LbURL.Text = "URL";
             // 
             // lbUsername
             // 
             this.lbUsername.AutoSize = true;
-            this.lbUsername.Location = new System.Drawing.Point(12, 57);
+            this.lbUsername.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbUsername.Location = new System.Drawing.Point(24, 110);
+            this.lbUsername.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(70, 16);
+            this.lbUsername.Size = new System.Drawing.Size(144, 32);
             this.lbUsername.TabIndex = 5;
             this.lbUsername.Text = "Username";
             // 
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(12, 98);
+            this.lbPassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbPassword.Location = new System.Drawing.Point(24, 190);
+            this.lbPassword.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(67, 16);
+            this.lbPassword.Size = new System.Drawing.Size(138, 32);
             this.lbPassword.TabIndex = 6;
             this.lbPassword.Text = "Password";
             // 
             // rtbDisplayInfo
             // 
-            this.rtbDisplayInfo.Location = new System.Drawing.Point(15, 142);
+            this.rtbDisplayInfo.Location = new System.Drawing.Point(30, 275);
+            this.rtbDisplayInfo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.rtbDisplayInfo.Name = "rtbDisplayInfo";
-            this.rtbDisplayInfo.Size = new System.Drawing.Size(579, 239);
+            this.rtbDisplayInfo.Size = new System.Drawing.Size(1154, 459);
             this.rtbDisplayInfo.TabIndex = 7;
             this.rtbDisplayInfo.Text = "";
             // 
-            // HTTP_POST
+            // Lab04_Bai04
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 396);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(1222, 767);
             this.Controls.Add(this.rtbDisplayInfo);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbUsername);
@@ -120,10 +133,13 @@
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.tbLink);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Lab04_Bai04";
             this.Text = "HTTP POST";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
