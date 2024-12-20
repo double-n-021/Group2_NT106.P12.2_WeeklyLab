@@ -25,6 +25,7 @@ using MimeKit;
         </html>
 Đường dẫn ảnh lấy từ google (copy url ảnh)
 */
+//Đổi gmail gửi nhớ đổi app password theo gmail đó
 
 namespace Group2_Lab05
 {

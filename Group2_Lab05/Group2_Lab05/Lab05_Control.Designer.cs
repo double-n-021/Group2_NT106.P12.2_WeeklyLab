@@ -1,6 +1,6 @@
 ﻿namespace Group2_Lab05
 {
-    partial class Lab02_Control
+    partial class Lab05_Control
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab02_Control));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab05_Control));
             this.btnBai05 = new System.Windows.Forms.Button();
             this.btnBai04 = new System.Windows.Forms.Button();
             this.btnBai03 = new System.Windows.Forms.Button();

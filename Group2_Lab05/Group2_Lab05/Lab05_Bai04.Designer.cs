@@ -1,6 +1,6 @@
 ﻿namespace Group2_Lab05
 {
-    partial class Lab02_Bai04
+    partial class Lab05_Bai04
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab02_Bai04));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab05_Bai04));
             this.dgvShow = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.portSMTP = new System.Windows.Forms.DomainUpDown();

@@ -16,7 +16,7 @@ namespace Group2_Lab05
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Lab02_Control());
+            Application.Run(new Lab05_Control());
         }
     }
 }

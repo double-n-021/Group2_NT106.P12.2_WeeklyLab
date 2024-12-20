@@ -90,17 +90,17 @@
     <Compile Include="Bai04_Formsend.Designer.cs">
       <DependentUpon>Bai04_Formsend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab02_Bai04.cs">
+    <Compile Include="Lab05_Bai04.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab02_Bai04.Designer.cs">
-      <DependentUpon>Lab02_Bai04.cs</DependentUpon>
+    <Compile Include="Lab05_Bai04.Designer.cs">
+      <DependentUpon>Lab05_Bai04.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab02_Control.cs">
+    <Compile Include="Lab05_Control.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab02_Control.Designer.cs">
-      <DependentUpon>Lab02_Control.cs</DependentUpon>
+    <Compile Include="Lab05_Control.Designer.cs">
+      <DependentUpon>Lab05_Control.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab05_Bai01.cs">
       <SubType>Form</SubType>
@@ -113,11 +113,11 @@
     <EmbeddedResource Include="Bai04_Formsend.resx">
       <DependentUpon>Bai04_Formsend.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab02_Bai04.resx">
-      <DependentUpon>Lab02_Bai04.cs</DependentUpon>
+    <EmbeddedResource Include="Lab05_Bai04.resx">
+      <DependentUpon>Lab05_Bai04.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab02_Control.resx">
-      <DependentUpon>Lab02_Control.cs</DependentUpon>
+    <EmbeddedResource Include="Lab05_Control.resx">
+      <DependentUpon>Lab05_Control.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab05_Bai01.resx">
       <DependentUpon>Lab05_Bai01.cs</DependentUpon>

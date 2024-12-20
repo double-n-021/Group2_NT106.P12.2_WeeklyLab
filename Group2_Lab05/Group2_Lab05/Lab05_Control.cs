@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Group2_Lab05
 {
-    public partial class Lab02_Control : Form
+    public partial class Lab05_Control : Form
     {
-        public Lab02_Control()
+        public Lab05_Control()
         {
             InitializeComponent();
         }
@@ -35,7 +35,8 @@ namespace Group2_Lab05
 
         private void btnBai04_Click(object sender, EventArgs e)
         {
-
+            Lab05_Bai04 formBai04 = new Lab05_Bai04();
+            formBai04.Show();
         }
 
         private void btnBai05_Click(object sender, EventArgs e)
