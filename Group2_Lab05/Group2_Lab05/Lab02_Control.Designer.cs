@@ -50,6 +50,7 @@
             this.btnBai05.TabIndex = 18;
             this.btnBai05.Text = "Bài 05";
             this.btnBai05.UseVisualStyleBackColor = false;
+            this.btnBai05.Click += new System.EventHandler(this.btnBai05_Click);
             // 
             // btnBai04
             // 
@@ -63,6 +64,7 @@
             this.btnBai04.TabIndex = 16;
             this.btnBai04.Text = "Bài 04";
             this.btnBai04.UseVisualStyleBackColor = false;
+            this.btnBai04.Click += new System.EventHandler(this.btnBai04_Click);
             // 
             // btnBai03
             // 
@@ -76,6 +78,7 @@
             this.btnBai03.TabIndex = 14;
             this.btnBai03.Text = "Bài 03";
             this.btnBai03.UseVisualStyleBackColor = false;
+            this.btnBai03.Click += new System.EventHandler(this.btnBai03_Click);
             // 
             // btnBai02
             // 
@@ -89,6 +92,7 @@
             this.btnBai02.TabIndex = 15;
             this.btnBai02.Text = "Bài 02";
             this.btnBai02.UseVisualStyleBackColor = false;
+            this.btnBai02.Click += new System.EventHandler(this.btnBai02_Click);
             // 
             // btnBai01
             // 
@@ -102,6 +106,7 @@
             this.btnBai01.TabIndex = 13;
             this.btnBai01.Text = "Bài 01";
             this.btnBai01.UseVisualStyleBackColor = false;
+            this.btnBai01.Click += new System.EventHandler(this.btnBai01_Click);
             // 
             // pictureBox1
             // 
