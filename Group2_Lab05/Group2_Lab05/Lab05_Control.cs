@@ -25,7 +25,8 @@ namespace Group2_Lab05
 
         private void btnBai02_Click(object sender, EventArgs e)
         {
-
+            Lab05_Bai02 formBai02 = new Lab05_Bai02();
+            formBai02.Show();
         }
 
         private void btnBai03_Click(object sender, EventArgs e)

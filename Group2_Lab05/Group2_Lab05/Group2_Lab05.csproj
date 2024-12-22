@@ -90,6 +90,12 @@
     <Compile Include="Bai04_Formsend.Designer.cs">
       <DependentUpon>Bai04_Formsend.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab05_Bai02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab05_Bai02.Designer.cs">
+      <DependentUpon>Lab05_Bai02.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab05_Bai04.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <EmbeddedResource Include="Bai04_Formsend.resx">
       <DependentUpon>Bai04_Formsend.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab05_Bai02.resx">
+      <DependentUpon>Lab05_Bai02.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab05_Bai04.resx">
       <DependentUpon>Lab05_Bai04.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +139,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -144,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jujutsu Kaisen HD Wallpaper and Background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
