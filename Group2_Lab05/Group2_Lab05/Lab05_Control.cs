@@ -29,20 +29,10 @@ namespace Group2_Lab05
             formBai02.Show();
         }
 
-        private void btnBai03_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnBai04_Click(object sender, EventArgs e)
         {
             Lab05_Bai04 formBai04 = new Lab05_Bai04();
             formBai04.Show();
-        }
-
-        private void btnBai05_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

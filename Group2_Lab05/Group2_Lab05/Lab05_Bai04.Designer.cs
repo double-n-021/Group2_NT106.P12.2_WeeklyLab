@@ -45,6 +45,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lvDisplayEmail = new System.Windows.Forms.ListView();
+            this.btSendmail = new System.Windows.Forms.Button();
+            this.btRefresh = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,25 +64,25 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox2.Location = new System.Drawing.Point(314, 128);
+            this.groupBox2.Location = new System.Drawing.Point(413, 128);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(582, 152);
+            this.groupBox2.Size = new System.Drawing.Size(483, 152);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cài đặt";
             // 
             // portSMTP
             // 
-            this.portSMTP.Location = new System.Drawing.Point(345, 76);
+            this.portSMTP.Location = new System.Drawing.Point(310, 76);
             this.portSMTP.Name = "portSMTP";
-            this.portSMTP.Size = new System.Drawing.Size(225, 27);
+            this.portSMTP.Size = new System.Drawing.Size(165, 27);
             this.portSMTP.TabIndex = 11;
             this.portSMTP.Text = "465";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(284, 79);
+            this.label6.Location = new System.Drawing.Point(249, 79);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 20);
             this.label6.TabIndex = 10;
@@ -88,16 +90,16 @@
             // 
             // portIMAP
             // 
-            this.portIMAP.Location = new System.Drawing.Point(59, 77);
+            this.portIMAP.Location = new System.Drawing.Point(74, 77);
             this.portIMAP.Name = "portIMAP";
-            this.portIMAP.Size = new System.Drawing.Size(196, 27);
+            this.portIMAP.Size = new System.Drawing.Size(161, 27);
             this.portIMAP.TabIndex = 9;
             this.portIMAP.Text = "993";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 79);
+            this.label5.Location = new System.Drawing.Point(21, 79);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 20);
             this.label5.TabIndex = 8;
@@ -105,15 +107,15 @@
             // 
             // tbSMTP
             // 
-            this.tbSMTP.Location = new System.Drawing.Point(345, 27);
+            this.tbSMTP.Location = new System.Drawing.Point(310, 27);
             this.tbSMTP.Name = "tbSMTP";
-            this.tbSMTP.Size = new System.Drawing.Size(225, 27);
+            this.tbSMTP.Size = new System.Drawing.Size(165, 27);
             this.tbSMTP.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(284, 34);
+            this.label4.Location = new System.Drawing.Point(249, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 6;
@@ -121,15 +123,15 @@
             // 
             // tbIMAP
             // 
-            this.tbIMAP.Location = new System.Drawing.Point(59, 27);
+            this.tbIMAP.Location = new System.Drawing.Point(74, 27);
             this.tbIMAP.Name = "tbIMAP";
-            this.tbIMAP.Size = new System.Drawing.Size(196, 27);
+            this.tbIMAP.Size = new System.Drawing.Size(161, 27);
             this.tbIMAP.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 34);
+            this.label3.Location = new System.Drawing.Point(21, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 20);
             this.label3.TabIndex = 5;
@@ -138,6 +140,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.btRefresh);
+            this.groupBox1.Controls.Add(this.btSendmail);
             this.groupBox1.Controls.Add(this.btLogin);
             this.groupBox1.Controls.Add(this.tbPassword);
             this.groupBox1.Controls.Add(this.tbUsername);
@@ -147,16 +151,16 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(13, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 152);
+            this.groupBox1.Size = new System.Drawing.Size(394, 152);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đăng nhập";
             // 
             // btLogin
             // 
-            this.btLogin.Location = new System.Drawing.Point(178, 109);
+            this.btLogin.Location = new System.Drawing.Point(245, 109);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(111, 35);
+            this.btLogin.Size = new System.Drawing.Size(143, 35);
             this.btLogin.TabIndex = 4;
             this.btLogin.Text = "Đăng nhập";
             this.btLogin.UseVisualStyleBackColor = true;
@@ -166,14 +170,14 @@
             // 
             this.tbPassword.Location = new System.Drawing.Point(93, 76);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(196, 27);
+            this.tbPassword.Size = new System.Drawing.Size(262, 27);
             this.tbPassword.TabIndex = 3;
             // 
             // tbUsername
             // 
             this.tbUsername.Location = new System.Drawing.Point(93, 28);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(196, 27);
+            this.tbUsername.Size = new System.Drawing.Size(262, 27);
             this.tbUsername.TabIndex = 2;
             // 
             // label2
@@ -203,6 +207,24 @@
             this.lvDisplayEmail.Size = new System.Drawing.Size(884, 348);
             this.lvDisplayEmail.TabIndex = 10;
             this.lvDisplayEmail.UseCompatibleStateImageBehavior = false;
+            // 
+            // btSendmail
+            // 
+            this.btSendmail.Location = new System.Drawing.Point(8, 111);
+            this.btSendmail.Name = "btSendmail";
+            this.btSendmail.Size = new System.Drawing.Size(111, 35);
+            this.btSendmail.TabIndex = 5;
+            this.btSendmail.Text = "Gửi mail";
+            this.btSendmail.UseVisualStyleBackColor = true;
+            // 
+            // btRefresh
+            // 
+            this.btRefresh.Location = new System.Drawing.Point(125, 109);
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.Size = new System.Drawing.Size(111, 35);
+            this.btRefresh.TabIndex = 6;
+            this.btRefresh.Text = "Refresh";
+            this.btRefresh.UseVisualStyleBackColor = true;
             // 
             // Lab05_Bai04
             // 
@@ -240,5 +262,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView lvDisplayEmail;
+        private System.Windows.Forms.Button btSendmail;
+        private System.Windows.Forms.Button btRefresh;
     }
 }
