@@ -172,6 +172,7 @@
             this.btLogin.TabIndex = 4;
             this.btLogin.Text = "Đăng nhập";
             this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // tbPassword
             // 
@@ -205,7 +206,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tài khoản";
             // 
-            // Lab02_Bai04
+            // Lab05_Bai04
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +215,7 @@
             this.Controls.Add(this.dgvShow);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Lab02_Bai04";
+            this.Name = "Lab05_Bai04";
             this.Text = "Lab02_Bai04";
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
             this.groupBox2.ResumeLayout(false);

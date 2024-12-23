@@ -16,5 +16,10 @@ namespace Group2_Lab05
         {
             InitializeComponent();
         }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
