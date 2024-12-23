@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab05_Bai04));
-            this.dgvShow = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.portSMTP = new System.Windows.Forms.DomainUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,21 +44,10 @@
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).BeginInit();
+            this.lvDisplayEmail = new System.Windows.Forms.ListView();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvShow
-            // 
-            this.dgvShow.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShow.Location = new System.Drawing.Point(13, 286);
-            this.dgvShow.Name = "dgvShow";
-            this.dgvShow.RowHeadersWidth = 51;
-            this.dgvShow.RowTemplate.Height = 24;
-            this.dgvShow.Size = new System.Drawing.Size(883, 364);
-            this.dgvShow.TabIndex = 5;
             // 
             // groupBox2
             // 
@@ -87,7 +75,7 @@
             this.portSMTP.Name = "portSMTP";
             this.portSMTP.Size = new System.Drawing.Size(225, 27);
             this.portSMTP.TabIndex = 11;
-            this.portSMTP.Text = "993";
+            this.portSMTP.Text = "465";
             // 
             // label6
             // 
@@ -206,18 +194,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tài khoản";
             // 
+            // lvDisplayEmail
+            // 
+            this.lvDisplayEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lvDisplayEmail.HideSelection = false;
+            this.lvDisplayEmail.Location = new System.Drawing.Point(12, 286);
+            this.lvDisplayEmail.Name = "lvDisplayEmail";
+            this.lvDisplayEmail.Size = new System.Drawing.Size(884, 348);
+            this.lvDisplayEmail.TabIndex = 10;
+            this.lvDisplayEmail.UseCompatibleStateImageBehavior = false;
+            // 
             // Lab05_Bai04
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(908, 662);
-            this.Controls.Add(this.dgvShow);
+            this.Controls.Add(this.lvDisplayEmail);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Lab05_Bai04";
             this.Text = "Lab02_Bai04";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -227,8 +224,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvShow;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DomainUpDown portSMTP;
         private System.Windows.Forms.Label label6;
@@ -244,5 +239,6 @@
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView lvDisplayEmail;
     }
 }
