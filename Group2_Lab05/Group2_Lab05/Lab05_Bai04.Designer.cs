@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lab05_Bai04));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.portSMTP = new System.Windows.Forms.DomainUpDown();
+            this.dmportSMTP = new System.Windows.Forms.DomainUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.portIMAP = new System.Windows.Forms.DomainUpDown();
+            this.dmportIMAP = new System.Windows.Forms.DomainUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.tbSMTP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbIMAP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btRefresh = new System.Windows.Forms.Button();
+            this.btSendmail = new System.Windows.Forms.Button();
             this.btLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lvDisplayEmail = new System.Windows.Forms.ListView();
-            this.btSendmail = new System.Windows.Forms.Button();
-            this.btRefresh = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -54,9 +54,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.portSMTP);
+            this.groupBox2.Controls.Add(this.dmportSMTP);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.portIMAP);
+            this.groupBox2.Controls.Add(this.dmportIMAP);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.tbSMTP);
             this.groupBox2.Controls.Add(this.label4);
@@ -71,13 +71,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cài đặt";
             // 
-            // portSMTP
+            // dmportSMTP
             // 
-            this.portSMTP.Location = new System.Drawing.Point(310, 76);
-            this.portSMTP.Name = "portSMTP";
-            this.portSMTP.Size = new System.Drawing.Size(165, 27);
-            this.portSMTP.TabIndex = 11;
-            this.portSMTP.Text = "465";
+            this.dmportSMTP.Location = new System.Drawing.Point(310, 76);
+            this.dmportSMTP.Name = "dmportSMTP";
+            this.dmportSMTP.Size = new System.Drawing.Size(165, 27);
+            this.dmportSMTP.TabIndex = 11;
+            this.dmportSMTP.Text = "465";
             // 
             // label6
             // 
@@ -88,13 +88,13 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Port";
             // 
-            // portIMAP
+            // dmportIMAP
             // 
-            this.portIMAP.Location = new System.Drawing.Point(74, 77);
-            this.portIMAP.Name = "portIMAP";
-            this.portIMAP.Size = new System.Drawing.Size(161, 27);
-            this.portIMAP.TabIndex = 9;
-            this.portIMAP.Text = "993";
+            this.dmportIMAP.Location = new System.Drawing.Point(74, 77);
+            this.dmportIMAP.Name = "dmportIMAP";
+            this.dmportIMAP.Size = new System.Drawing.Size(161, 27);
+            this.dmportIMAP.TabIndex = 9;
+            this.dmportIMAP.Text = "993";
             // 
             // label5
             // 
@@ -156,6 +156,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đăng nhập";
             // 
+            // btRefresh
+            // 
+            this.btRefresh.Location = new System.Drawing.Point(125, 109);
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.Size = new System.Drawing.Size(111, 35);
+            this.btRefresh.TabIndex = 6;
+            this.btRefresh.Text = "Refresh";
+            this.btRefresh.UseVisualStyleBackColor = true;
+            this.btRefresh.Visible = false;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
+            // 
+            // btSendmail
+            // 
+            this.btSendmail.Location = new System.Drawing.Point(8, 111);
+            this.btSendmail.Name = "btSendmail";
+            this.btSendmail.Size = new System.Drawing.Size(111, 35);
+            this.btSendmail.TabIndex = 5;
+            this.btSendmail.Text = "Gửi mail";
+            this.btSendmail.UseVisualStyleBackColor = true;
+            this.btSendmail.Visible = false;
+            this.btSendmail.Click += new System.EventHandler(this.btSendmail_Click);
+            // 
             // btLogin
             // 
             this.btLogin.Location = new System.Drawing.Point(245, 109);
@@ -172,6 +194,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(262, 27);
             this.tbPassword.TabIndex = 3;
+            this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
             // tbUsername
             // 
@@ -207,24 +230,7 @@
             this.lvDisplayEmail.Size = new System.Drawing.Size(884, 348);
             this.lvDisplayEmail.TabIndex = 10;
             this.lvDisplayEmail.UseCompatibleStateImageBehavior = false;
-            // 
-            // btSendmail
-            // 
-            this.btSendmail.Location = new System.Drawing.Point(8, 111);
-            this.btSendmail.Name = "btSendmail";
-            this.btSendmail.Size = new System.Drawing.Size(111, 35);
-            this.btSendmail.TabIndex = 5;
-            this.btSendmail.Text = "Gửi mail";
-            this.btSendmail.UseVisualStyleBackColor = true;
-            // 
-            // btRefresh
-            // 
-            this.btRefresh.Location = new System.Drawing.Point(125, 109);
-            this.btRefresh.Name = "btRefresh";
-            this.btRefresh.Size = new System.Drawing.Size(111, 35);
-            this.btRefresh.TabIndex = 6;
-            this.btRefresh.Text = "Refresh";
-            this.btRefresh.UseVisualStyleBackColor = true;
+            this.lvDisplayEmail.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvDisplayEmail_ItemSelectionChanged);
             // 
             // Lab05_Bai04
             // 
@@ -237,6 +243,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Lab05_Bai04";
             this.Text = "Lab02_Bai04";
+            this.Load += new System.EventHandler(this.Lab05_Bai04_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -247,9 +254,9 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DomainUpDown portSMTP;
+        private System.Windows.Forms.DomainUpDown dmportSMTP;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DomainUpDown portIMAP;
+        private System.Windows.Forms.DomainUpDown dmportIMAP;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbSMTP;
         private System.Windows.Forms.Label label4;

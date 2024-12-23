@@ -116,6 +116,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bai04_Formread.resx">
+      <DependentUpon>Bai04_Formread.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bai04_Formsend.resx">
       <DependentUpon>Bai04_Formsend.cs</DependentUpon>
     </EmbeddedResource>
