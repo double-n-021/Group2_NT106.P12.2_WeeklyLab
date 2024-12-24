@@ -25,6 +25,7 @@ namespace Group2_Lab05
 
         string IMAP, SMTP;
         int portIMAP, portSMTP;
+        bool isRefresh = false;
 
         private void btRefresh_Click(object sender, EventArgs e)
         {
@@ -38,47 +39,7 @@ namespace Group2_Lab05
             lvDisplayEmail.Columns.Add("From", 200);
             lvDisplayEmail.Columns.Add("Subject", 300);
             lvDisplayEmail.Columns.Add("Datetime", 100);
-            try
-            {
-                //Mở hộp thư đến
-                var inbox = client.Inbox;
-                inbox.Open(FolderAccess.ReadOnly);
-
-                //Hiển thị tổng số email
-                int totalEmails = inbox.Count;
-                int nmrRecent = 0;
-
-                if (totalEmails > nmrRecent)
-                {
-                    nmrRecent = totalEmails;
-                }
-                nmrRecent = totalEmails;
-
-                //Lấy số email mới nhất
-                int recent = (int)nmrRecent;
-
-                int count = Math.Min(recent, totalEmails);
-                lvDisplayEmail.Items.Clear(); //Xóa dữ liệu cũ trên ListView
-
-                //Lấy và hiển thị eamil
-                for (int i = totalEmails - count; i < totalEmails; i++)
-                {
-                    var message = inbox.GetMessage(i);
-                    ListViewItem item = new ListViewItem(i.ToString());
-                    item.SubItems.Add(message.From.ToString());             //Người gửi
-                    item.SubItems.Add(message.Subject.ToString());
-                    item.SubItems.Add(message.Date.ToString());             //Thời gian
-                    lvDisplayEmail.Items.Add(item);
-                    lvDisplayEmail.Refresh(); //cập nhật ListView ngay lập tức
-
-                    //Thêm await và task để giúp UI không bị treo trong quá trình load mail
-                    await Task.Delay(500); //Thời gian giữa mỗi lần hiển thị email (mặc định 500ms)
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
+            isRefresh = true;
         }
 
         private void btSendmail_Click(object sender, EventArgs e)
@@ -94,14 +55,14 @@ namespace Group2_Lab05
                 // Get the selected item
                 ListViewItem selectedItem = e.Item;
 
-                // Open Form2 and pass the selected item's data
-                string subject = lvDisplayEmail.SelectedItems[0].SubItems[2].Text;
-                string From = lvDisplayEmail.SelectedItems[0].SubItems[1].Text;
-                string emailContent = lvDisplayEmail.SelectedItems[0].SubItems[3].Text;
-                if (lvDisplayEmail.SelectedItems.Count > 0)
+                if (selectedItem != null)
                 {
+                    string from = selectedItem.SubItems[1].Text;
+                    string subject = selectedItem.SubItems[2].Text;
+                    string htmlBody = selectedItem.Tag as string; // Lấy HtmlBody từ Tag
 
-                    Bai04_Formread readMail = new Bai04_Formread(From, tbUsername.Text, subject, emailContent);
+                    // Mở form đọc email
+                    Bai04_Formread readMail = new Bai04_Formread(from, tbUsername.Text, subject, htmlBody);
                     readMail.Show();
                 }
             }
@@ -138,25 +99,8 @@ namespace Group2_Lab05
                 dmportSMTP.Text = "";
                 tbSMTP.Text = "";
                 btLogin.Text = "Đăng nhập";
-
-                try
-                {
-                    if (client.IsConnected)
-                    {
-                        client.Disconnect(true);
-                        MessageBox.Show("Đã đăng xuất");
-                        Lab05_Bai04_Load(sender, e);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không có kết nối đến server");
-                    }
-                    btLogin.Text = "Đăng nhập";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
-                }
+                MessageBox.Show("Đã đăng xuất");
+                Lab05_Bai04_Load(sender, e);
             }
             else
             {
@@ -203,39 +147,37 @@ namespace Group2_Lab05
 
                     //Hiển thị tổng số email
                     int totalEmails = inbox.Count;
-                    int nmrRecent = 0;
-
-                    if (totalEmails > nmrRecent)
-                    {
-                        nmrRecent = totalEmails;
-                    }
-                    nmrRecent = totalEmails;
-
-                    //Lấy số email mới nhất
-                    int recent = (int)nmrRecent;
-
-                    int count = Math.Min(recent, totalEmails);
+                    
                     lvDisplayEmail.Items.Clear(); //Xóa dữ liệu cũ trên ListView
 
                     //Lấy và hiển thị eamil
-                    for (int i = totalEmails - count; i < totalEmails; i++)
+                    for (int i = 0; i < totalEmails; i++)
                     {
                         var message = inbox.GetMessage(i);
                         ListViewItem item = new ListViewItem(i.ToString());
                         item.SubItems.Add(message.From.ToString());             //Người gửi
                         item.SubItems.Add(message.Subject.ToString());
                         item.SubItems.Add(message.Date.ToString());             //Thời gian
+                        item.Tag = message.HtmlBody;
                         lvDisplayEmail.Items.Add(item);
                         lvDisplayEmail.Refresh(); //cập nhật ListView ngay lập tức
 
                         //Thêm await và task để giúp UI không bị treo trong quá trình load mail
                         await Task.Delay(500); //Thời gian giữa mỗi lần hiển thị email (mặc định 500ms)
+                        if (btLogin.Text == "Đăng nhập")
+                        {
+                            client.Disconnect(true);
+                            break;
+                        }
+                            
+                        if (isRefresh)
+                        {
+                            i = -1;
+                            isRefresh = false;
+                        }
                     }
                 }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message);
-                }
+                catch { }            
             }
         }
     }
